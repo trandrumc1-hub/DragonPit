@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dragon Pit – Drum Studio Hà Nội</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0c0b0b;
+  --surface: #161414;
+  --card: #1e1b1b;
+  --border: #2c2828;
+  --gold: #c9a84c;
+  --gold2: #f0d080;
+  --red: #c0392b;
+  --white: #f0ece8;
+  --muted: #8a8480;
+  --green: #27ae60;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:'Inter',sans-serif;font-size:14px;line-height:1.6}
+
+/* HEADER */
+header{position:sticky;top:0;z-index:200;background:rgba(12,11,11,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;gap:20px;height:58px}
+.logo-wrap{display:flex;align-items:center;gap:10px;flex-shrink:0;text-decoration:none}
+.logo-icon{font-size:26px;line-height:1}
+.logo-text{font-family:'Anton',sans-serif;font-size:22px;letter-spacing:1px;color:var(--gold);line-height:1}
+.logo-sub{font-size:9px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-top:1px}
+nav{display:flex;gap:4px;margin-left:8px}
+nav a{color:var(--muted);font-size:13px;font-weight:500;text-decoration:none;padding:6px 10px;border-radius:6px;transition:all .2s;white-space:nowrap}
+nav a:hover{color:var(--white);background:var(--card)}
+nav a.active{color:var(--gold)}
+#search{flex:1;max-width:320px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:7px 14px;color:var(--white);font-size:13px;outline:none;transition:border-color .2s;margin-left:auto}
+#search:focus{border-color:var(--gold)}
+#search::placeholder{color:var(--muted)}
+.cart-btn{background:var(--gold);border:none;border-radius:8px;padding:8px 16px;color:#0c0b0b;font-weight:700;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:6px;transition:background .2s;flex-shrink:0}
+.cart-btn:hover{background:var(--gold2)}
+#cart-count{background:#0c0b0b;color:var(--gold);border-radius:50%;width:18px;height:18px;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
+
+/* CONTACT BAR */
+.contact-bar{background:#100f0f;border-bottom:1px solid var(--border);padding:7px 24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;font-size:12px}
+.ci{display:flex;align-items:center;gap:5px;color:var(--muted);text-decoration:none;transition:color .2s}
+.ci:hover{color:var(--white)}
+.ci.zalo{color:#0068ff;font-weight:600}
+
+/* HERO */
+.hero{position:relative;background:#0c0b0b;overflow:hidden;padding:72px 24px 64px;text-align:center}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 50% 100%,rgba(201,168,76,.12) 0%,transparent 65%);pointer-events:none}
+.hero-drum{font-size:80px;line-height:1;margin-bottom:20px;filter:drop-shadow(0 0 40px rgba(201,168,76,.3))}
+.hero-eyebrow{font-size:11px;letter-spacing:3px;color:var(--gold);text-transform:uppercase;margin-bottom:12px;font-weight:600}
+.hero h1{font-family:'Anton',sans-serif;font-size:clamp(52px,10vw,110px);line-height:.9;letter-spacing:2px;text-transform:uppercase}
+.hero h1 span{color:var(--gold)}
+.hero-tagline{margin-top:16px;color:var(--muted);font-size:15px;max-width:520px;margin-inline:auto}
+.hero-pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.pill{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:7px 18px;font-size:13px;font-weight:500;color:var(--muted)}
+.pill b{color:var(--gold)}
+
+/* SECTION TITLES */
+.section{padding:48px 24px 16px}
+.section-head{display:flex;align-items:center;gap:16px;margin-bottom:28px}
+.section-head h2{font-family:'Anton',sans-serif;font-size:clamp(28px,5vw,42px);letter-spacing:1px;text-transform:uppercase;white-space:nowrap}
+.section-line{flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+.section-tag{font-size:10px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;font-weight:700}
+
+/* SERVICE CARDS */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;padding:0 24px 8px}
+.svc-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px 24px;position:relative;overflow:hidden;transition:border-color .2s,transform .2s}
+.svc-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold2))}
+.svc-icon{font-size:40px;margin-bottom:14px}
+.svc-title{font-family:'Anton',sans-serif;font-size:22px;letter-spacing:.5px;color:var(--gold);margin-bottom:6px}
+.svc-desc{color:var(--muted);font-size:13px;line-height:1.7;margin-bottom:16px}
+.svc-price{font-family:'Anton',sans-serif;font-size:28px;color:var(--white)}
+.svc-price span{font-size:13px;font-weight:400;color:var(--muted);font-family:'Inter',sans-serif}
+.svc-cta{margin-top:16px;display:inline-flex;align-items:center;gap:6px;background:var(--gold);color:#0c0b0b;border:none;border-radius:8px;padding:9px 18px;font-weight:700;font-size:13px;cursor:pointer;text-decoration:none;transition:background .2s}
+.svc-cta:hover{background:var(--gold2)}
+
+/* FILTER BAR */
+.filter-bar{padding:12px 24px;display:flex;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--border);background:var(--surface)}
+.filter-btn{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:6px 16px;color:var(--muted);font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;transition:all .2s}
+.filter-btn:hover{border-color:var(--gold);color:var(--white)}
+.filter-btn.active{background:var(--gold);border-color:var(--gold);color:#0c0b0b;font-weight:700}
+.stats-bar{padding:8px 24px;display:flex;align-items:center;gap:10px;color:var(--muted);font-size:12px;border-bottom:1px solid var(--border)}
+#result-count{color:var(--gold);font-weight:700}
+
+/* PRODUCT GRID */
+.grid-wrap{padding:20px 24px 40px}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+
+/* PRODUCT CARD */
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:transform .2s,border-color .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);border-color:var(--gold);box-shadow:0 8px 32px rgba(201,168,76,.12)}
+.card-img{background:#110f0f;height:170px;display:flex;align-items:center;justify-content:center;font-size:52px;border-bottom:1px solid var(--border);position:relative}
+.card-badges{position:absolute;top:8px;left:8px;display:flex;gap:4px}
+.badge{font-size:9px;font-weight:700;letter-spacing:.8px;padding:3px 7px;border-radius:4px;text-transform:uppercase}
+.badge-new{background:#27ae60;color:#fff}
+.badge-hot{background:#e67e22;color:#fff}
+.badge-sale{background:var(--red);color:#fff}
+.badge-premium{background:var(--gold);color:#000}
+.card-body{padding:13px 15px 15px;display:flex;flex-direction:column;flex:1}
+.card-brand{font-size:9px;letter-spacing:2px;font-weight:700;color:var(--gold);text-transform:uppercase;margin-bottom:2px}
+.card-model{font-family:'Anton',sans-serif;font-size:18px;line-height:1.1;color:var(--white);margin-bottom:3px}
+.card-name{font-size:11px;color:var(--muted);margin-bottom:10px;flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-price{font-family:'Anton',sans-serif;font-size:24px;color:var(--gold);margin-bottom:10px}
+.add-btn{width:100%;padding:9px;background:transparent;border:1px solid var(--gold);border-radius:8px;color:var(--gold);font-weight:600;font-size:12px;cursor:pointer;transition:all .2s}
+.add-btn:hover{background:var(--gold);color:#0c0b0b}
+
+/* CART DRAWER */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:300;display:none}
+.overlay.open{display:block}
+.cart-drawer{position:fixed;right:0;top:0;bottom:0;width:min(380px,100vw);background:var(--surface);border-left:1px solid var(--border);z-index:400;transform:translateX(100%);transition:transform .3s;display:flex;flex-direction:column}
+.cart-drawer.open{transform:translateX(0)}
+.drawer-header{padding:18px 20px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.drawer-title{font-family:'Anton',sans-serif;font-size:20px;color:var(--gold)}
+.close-btn{background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer}
+.close-btn:hover{color:var(--white)}
+.cart-items{flex:1;overflow-y:auto;padding:14px}
+.cart-empty{text-align:center;color:var(--muted);padding:48px 0;font-size:36px}
+.cart-empty p{font-size:13px;margin-top:8px}
+.cart-item{display:flex;gap:10px;padding:12px 0;border-bottom:1px solid var(--border)}
+.ci-icon{font-size:26px;flex-shrink:0}
+.ci-info{flex:1}
+.ci-model{font-weight:600;font-size:13px}
+.ci-name{font-size:11px;color:var(--muted);margin-top:1px}
+.ci-price{color:var(--gold);font-weight:600;margin-top:4px;font-size:12px}
+.ci-qty{display:flex;align-items:center;gap:7px;margin-top:5px}
+.qty-btn{background:var(--card);border:1px solid var(--border);border-radius:4px;width:22px;height:22px;color:var(--white);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center}
+.qty-btn:hover{background:var(--gold);border-color:var(--gold);color:#000}
+.qty-val{font-size:13px;font-weight:600;min-width:14px;text-align:center}
+.ci-remove{background:none;border:none;color:var(--muted);cursor:pointer;font-size:15px;flex-shrink:0}
+.ci-remove:hover{color:var(--red)}
+.cart-footer{border-top:1px solid var(--border);padding:14px 20px}
+.cart-total{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.ct-label{color:var(--muted);font-size:13px}
+.ct-amount{font-family:'Anton',sans-serif;font-size:26px;color:var(--gold)}
+.checkout-btn{width:100%;padding:12px;background:var(--gold);border:none;border-radius:10px;color:#0c0b0b;font-weight:700;font-size:14px;cursor:pointer;transition:background .2s}
+.checkout-btn:hover{background:var(--gold2)}
+
+/* MODAL */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:500;display:none;align-items:center;justify-content:center;padding:16px}
+.modal-bg.open{display:flex}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:16px;max-width:560px;width:100%;max-height:90vh;overflow-y:auto;padding:26px}
+.modal-top{display:flex;gap:14px;margin-bottom:18px}
+.modal-icon{font-size:60px;flex-shrink:0}
+.modal-brand{font-size:9px;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:4px}
+.modal-model{font-family:'Anton',sans-serif;font-size:28px;line-height:1}
+.modal-fullname{color:var(--muted);font-size:12px;margin-top:4px}
+.modal-price{font-family:'Anton',sans-serif;font-size:36px;color:var(--gold);margin:14px 0}
+.modal-desc{font-size:13px;line-height:1.75;color:#c0bbb5;white-space:pre-wrap;margin-bottom:20px}
+.modal-actions{display:flex;gap:10px}
+.modal-add{flex:1;padding:12px;background:var(--gold);border:none;border-radius:10px;color:#0c0b0b;font-weight:700;font-size:14px;cursor:pointer;transition:background .2s}
+.modal-add:hover{background:var(--gold2)}
+.modal-close-btn{padding:12px 20px;background:var(--card);border:1px solid var(--border);border-radius:10px;color:var(--muted);font-size:13px;cursor:pointer;transition:all .2s}
+.modal-close-btn:hover{border-color:var(--white);color:var(--white)}
+
+/* GALLERY in MODAL */
+.modal-gallery{margin-bottom:18px}
+.gallery-main{width:100%;height:300px;border-radius:10px;overflow:hidden;background:#0a0909;position:relative;margin-bottom:10px;border:1px solid var(--border)}
+.gallery-main img{width:100%;height:100%;object-fit:contain;transition:opacity .25s}
+.g-prev,.g-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.65);border:1px solid var(--border);border-radius:6px;color:var(--white);font-size:18px;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s;z-index:2}
+.g-prev{left:10px}.g-next{right:10px}
+.g-prev:hover,.g-next:hover{background:var(--gold);color:#000}
+.gallery-counter{position:absolute;bottom:8px;right:10px;font-size:11px;color:var(--muted);background:rgba(0,0,0,.55);padding:2px 8px;border-radius:10px}
+.gallery-thumbs{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px}
+.gallery-thumbs::-webkit-scrollbar{height:4px}
+.gallery-thumbs::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.g-thumb{width:62px;height:52px;flex-shrink:0;border-radius:6px;overflow:hidden;border:2px solid transparent;cursor:pointer;background:#0a0909;transition:border-color .2s}
+.g-thumb img{width:100%;height:100%;object-fit:cover}
+.g-thumb.active{border-color:var(--gold)}
+.card-img img{width:100%;height:100%;object-fit:cover}
+
+/* TOAST */
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:var(--gold);color:#000;padding:10px 20px;border-radius:8px;font-weight:700;font-size:13px;z-index:999;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1}
+
+/* ZALO FLOAT */
+.zalo-float{position:fixed;bottom:24px;right:24px;z-index:600;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.zalo-label{background:#0068ff;color:#fff;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;box-shadow:0 4px 16px rgba(0,104,255,.4);animation:zpulse 2s infinite}
+@keyframes zpulse{0%,100%{box-shadow:0 4px 16px rgba(0,104,255,.4)}50%{box-shadow:0 4px 28px rgba(0,104,255,.75)}}
+.zalo-btn{width:54px;height:54px;background:#0068ff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;text-decoration:none;box-shadow:0 4px 20px rgba(0,104,255,.5);transition:transform .2s}
+.zalo-btn:hover{transform:scale(1.1)}
+
+/* FOOTER */
+footer{background:#090808;border-top:1px solid var(--border);padding:40px 24px 24px;margin-top:24px}
+.footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:28px;margin-bottom:28px}
+.footer-logo{font-family:'Anton',sans-serif;font-size:28px;color:var(--gold);margin-bottom:8px}
+.footer-desc{color:var(--muted);font-size:13px;line-height:1.7}
+.footer-col h4{font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;font-weight:700;margin-bottom:12px}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:9px;color:#a09a94;font-size:13px;display:flex;gap:8px;align-items:flex-start}
+.footer-col ul li a{color:#a09a94;text-decoration:none;transition:color .2s}
+.footer-col ul li a:hover{color:var(--white)}
+.footer-zalo{display:inline-flex;align-items:center;gap:7px;background:#0068ff;color:#fff;padding:9px 18px;border-radius:8px;font-weight:700;font-size:13px;text-decoration:none;margin-top:8px;transition:background .2s}
+.footer-zalo:hover{background:#0052cc}
+.footer-bottom{border-top:1px solid var(--border);padding-top:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;color:var(--muted);font-size:12px}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{display:none}
+  .services-grid{padding:0 12px}
+  .grid-wrap{padding:12px 12px 32px}
+  .product-grid{grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px}
+  .card-img{height:130px;font-size:38px}
+  header{padding:0 12px;gap:10px}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="#" class="logo-wrap">
+    <span class="logo-icon">🐉</span>
+    <div>
+      <div class="logo-text">DRAGON PIT</div>
+      <div class="logo-sub">Drum Studio · Hà Nội</div>
+    </div>
+  </a>
+  <nav>
+    <a href="#services" class="active">Dịch vụ</a>
+    <a href="#shop">Cửa hàng</a>
+    <a href="#footer">Liên hệ</a>
+  </nav>
+  <input id="search" type="text" placeholder="Tìm sản phẩm...">
+  <button class="cart-btn" onclick="toggleCart()">
+    🛒 Giỏ <div id="cart-count">0</div>
+  </button>
+</header>
+
+<!-- CONTACT BAR -->
+<div class="contact-bar">
+  <a href="tel:0993997993" class="ci">📞 0993 997 993</a>
+  <a href="https://zalo.me/0993997993" target="_blank" class="ci zalo">💬 Zalo: 0993 997 993</a>
+  <span class="ci">📍 487 Hoàng Hoa Thám, Ba Đình, Hà Nội</span>
+  <span class="ci">🕐 8:00 – 20:00 · Mở cửa mỗi ngày</span>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-drum">🥁</div>
+  <div class="hero-eyebrow">487 Hoàng Hoa Thám · Ba Đình · Hà Nội</div>
+  <h1>DRAGON<br><span>PIT</span></h1>
+  <p class="hero-tagline">Drum Studio chuyên nghiệp — Học trống, Học sản xuất nhạc, Cho thuê phòng tập band & Mua sắm nhạc cụ</p>
+  <div class="hero-pills">
+    <span class="pill">🥁 Dạy trống <b>1-1</b></span>
+    <span class="pill">🎛️ Producer Course <b>1-1</b></span>
+    <span class="pill">🎸 Phòng tập band</span>
+    <span class="pill">🛒 Nhạc cụ chính hãng</span>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<div id="services" class="section">
+  <div class="section-head">
+    <div class="section-tag">Dịch vụ</div>
+    <h2>Học & Tập luyện</h2>
+    <div class="section-line"></div>
+  </div>
+</div>
+
+<div class="services-grid">
+  <div class="svc-card">
+    <div class="svc-icon">🥁</div>
+    <div class="svc-title">Học Trống 1-1</div>
+    <div class="svc-desc">Khoá học trống cơ bản đến nâng cao với giảng viên chuyên nghiệp. Học 1 kèm 1, lịch linh hoạt theo bạn. Phù hợp từ người mới bắt đầu.</div>
+    <div class="svc-price">5.000.000 ₫ <span>/ 10 buổi</span></div>
+    <a href="https://zalo.me/0993997993" target="_blank" class="svc-cta">💬 Đăng ký Zalo</a>
+  </div>
+
+  <div class="svc-card">
+    <div class="svc-icon">🎛️</div>
+    <div class="svc-title">Producer 1-1</div>
+    <div class="svc-desc">Khoá học sáng tác & sản xuất âm nhạc cá nhân hoá. Học cách làm beat, mix, arrangement từ A–Z. Dành cho ai muốn tự làm nhạc.</div>
+    <div class="svc-price">5.000.000 ₫ <span>/ 10 buổi</span></div>
+    <a href="https://zalo.me/0993997993" target="_blank" class="svc-cta">💬 Đăng ký Zalo</a>
+  </div>
+
+  <div class="svc-card">
+    <div class="svc-icon">🎵</div>
+    <div class="svc-title">Lớp Học Chung</div>
+    <div class="svc-desc">Học nhóm, không khí sôi động. Giao lưu với các bạn cùng đam mê, tiết kiệm hơn lớp 1-1. Lịch cố định hàng tuần.</div>
+    <div class="svc-price">300.000 ₫ <span>/ buổi</span></div>
+    <a href="https://zalo.me/0993997993" target="_blank" class="svc-cta">💬 Đăng ký Zalo</a>
+  </div>
+
+  <div class="svc-card">
+    <div class="svc-icon">🎸</div>
+    <div class="svc-title">Thuê Phòng Tập Band</div>
+    <div class="svc-desc">Phòng tập band cách âm chuẩn, đầy đủ thiết bị — trống, amp guitar, amp bass, micro, PA. Đặt theo giờ, linh hoạt thời gian.</div>
+    <div class="svc-price" style="font-size:20px;margin-top:4px">Liên hệ báo giá</div>
+    <a href="https://zalo.me/0993997993" target="_blank" class="svc-cta">💬 Hỏi giá Zalo</a>
+  </div>
+</div>
+
+<!-- SHOP -->
+<div id="shop" class="section">
+  <div class="section-head">
+    <div class="section-tag">Cửa hàng</div>
+    <h2>Nhạc cụ & Thiết bị</h2>
+    <div class="section-line"></div>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filter('all',this)">🎵 Tất cả</button>
+  <button class="filter-btn" onclick="filter('guitar',this)">🎸 Guitar</button>
+  <button class="filter-btn" onclick="filter('bass',this)">🎸 Bass</button>
+  <button class="filter-btn" onclick="filter('drums-acoustic',this)">🥁 Trống Cơ</button>
+  <button class="filter-btn" onclick="filter('drums-digital',this)">🎛️ Trống Điện</button>
+  <button class="filter-btn" onclick="filter('wireless',this)">📡 Wireless</button>
+  <button class="filter-btn" onclick="filter('amp',this)">🔊 Amplifier</button>
+  <button class="filter-btn" onclick="filter('pedal',this)">🎛️ Effect Pedal</button>
+  <button class="filter-btn" onclick="filter('keyboard',this)">🎹 Piano/Keyboard</button>
+  <button class="filter-btn" onclick="filter('mixer',this)">🎚️ Mixer</button>
+  <button class="filter-btn" onclick="filter('pro-audio',this)">🎙️ Pro Audio</button>
+  <button class="filter-btn" onclick="filter('accessories',this)">🔧 Phụ kiện</button>
+</div>
+
+<div class="stats-bar">
+  Hiển thị <span id="result-count" style="margin:0 4px">0</span> sản phẩm
+</div>
+
+<div class="grid-wrap">
+  <div class="product-grid" id="grid"></div>
+</div>
+
+<!-- Cart Drawer -->
+<div class="overlay" id="overlay" onclick="toggleCart()"></div>
+<div class="cart-drawer" id="cart-drawer">
+  <div class="drawer-header">
+    <div class="drawer-title">🛒 Giỏ hàng</div>
+    <button class="close-btn" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items">
+    <div class="cart-empty">🛒<p>Giỏ hàng trống</p></div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span class="ct-label">Tổng cộng</span>
+      <span class="ct-amount" id="cart-total">0 ₫</span>
+    </div>
+    <button class="checkout-btn" onclick="checkout()">Liên hệ đặt hàng →</button>
+  </div>
+</div>
+
+<!-- Product Modal -->
+<div class="modal-bg" id="modal-bg" onclick="closeModal(event)">
+  <div class="modal" id="modal-content"></div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- Zalo Float -->
+<div class="zalo-float">
+  <div class="zalo-label">Tư vấn Zalo!</div>
+  <a href="https://zalo.me/0993997993" target="_blank" class="zalo-btn">💬</a>
+</div>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">🐉 DRAGON PIT</div>
+      <div class="footer-desc">Drum Studio chuyên nghiệp tại Hà Nội.<br>Dạy trống, sản xuất nhạc, cho thuê phòng tập band và kinh doanh nhạc cụ chính hãng.</div>
+      <a href="https://zalo.me/0993997993" target="_blank" class="footer-zalo" style="margin-top:16px">💬 Nhắn Zalo ngay</a>
+    </div>
+    <div class="footer-col">
+      <h4>Liên hệ</h4>
+      <ul>
+        <li>📞 <a href="tel:0993997993">0993 997 993</a></li>
+        <li>📍 487 Hoàng Hoa Thám, Ba Đình, Hà Nội</li>
+        <li>🕐 8:00 – 20:00 (Mở cửa mỗi ngày)</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Dịch vụ</h4>
+      <ul>
+        <li>🥁 Học trống 1-1 · 5tr/10 buổi</li>
+        <li>🎛️ Producer 1-1 · 5tr/10 buổi</li>
+        <li>🎵 Lớp học chung · 300k/buổi</li>
+        <li>🎸 Cho thuê phòng tập band</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Nhạc cụ</h4>
+      <ul>
+        <li>🎸 Guitar Corona / Eart</li>
+        <li>🥁 Trống Kingzbeat / NUX</li>
+        <li>📡 Wireless NUX</li>
+        <li>🔊 Amp & Effect NUX</li>
+        <li>🎚️ Mixer Bigsong</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Dragon Pit – 487 Hoàng Hoa Thám, Ba Đình, Hà Nội</span>
+    <span>Hotline: <a href="tel:0993997993" style="color:var(--gold);text-decoration:none;font-weight:600">0993 997 993</a></span>
+  </div>
+</footer>
+
+<script>
+const P = [
+  // ── GUITAR - CORONA ──
+  {id:'cor-std-st',cat:'guitar',brand:'Corona',model:'Standard ST',name:'Guitar Điện Stratocaster – SSH',price:11900000,icon:'🎸',badges:[],desc:'Body: Campnosperma Solid 44.5mm\nCổ: Hard Maple (Standard C)\nFretboard: Indian Laurel hoặc Maple (9.5")\nFret: Medium Jumbo 22F\nPickup: Dyna Classic Set (SSH)\nBridge: Pro Vive Trem\nMàu: Olympic White / Black / Daphne Blue / Competition Orange / Metallic Red / Shell Pink\nKèm: Case, Tremolo Arm, Wrench'},
+  {id:'cor-std-plus-st',cat:'guitar',brand:'Corona',model:'Standard Plus ST',name:'Guitar Điện Stratocaster – Roasted Maple',price:12700000,icon:'🎸',badges:[],desc:'Body: Campnosperma Solid 44.5mm\nCổ: Roasted Maple (Standard C)\nFretboard: Roasted Maple (9.5")\nFret: Medium Jumbo 22F\nPickup: Dyna Max Set (SSH)\nBridge: Pro Vive Plus Trem\nMàu: Black / Olympic White / Daphne Blue / Shell Pink / Lake Placid Blue / Fiesta Red / 3-Tone Sunburst\nKèm: Case, Tremolo Arm, Wrench'},
+  {id:'cor-classic-te',cat:'guitar',brand:'Corona',model:'Classic TE',name:'Guitar Điện Telecaster – Maple',price:11900000,icon:'🎸',badges:[],desc:'Body: Campnosperma Solid 44.5mm\nCổ: Hard Maple (Standard C)\nFretboard: Maple (9.5")\nFret: Medium Jumbo 22F\nPickup: Dyna Classic T Set\nBridge: Retro T-Vive\nMàu: Olympic White / Black / Butterscotch\nKèm: Case, Wrench'},
+  {id:'cor-mod-std',cat:'guitar',brand:'Corona',model:'Modern Standard',name:'Guitar Điện Alder – Atomic Humbucker',price:14200000,icon:'🎸',badges:[],desc:'Body: Alder Solid 44.5mm\nCổ: Indian Laurel hoặc Maple\nFretboard: Maple (9.5")\nFret: Medium Jumbo 22F\nPickup: Corona Atomic Humbucker Set\nBridge: Pro Vive Trem | Locking Machine Head\nMàu: Olympic White / Black / Daphne Blue / Shell Pink\nKèm: Case, Tremolo Arm, Wrench'},
+  {id:'cor-mod-plus',cat:'guitar',brand:'Corona',model:'Modern Plus',name:'Guitar Điện Stainless Steel 24F',price:18500000,icon:'🎸',badges:['premium'],desc:'Body: Alder Solid 44.5mm\nCổ: Roasted Maple (Standard C)\nFretboard: Roasted Maple (9.5")\nFret: Jescar 55090S Stainless 24F\nPickup: Corona Atomic Humbucker Set\nBridge: Pro Vive-II Trem | Locking Machine Head\nMàu: Olympic White / Daphne Blue / Shell Pink\nKèm: Case, Tremolo Arm, Wrench'},
+  {id:'cor-mod-plus-hss',cat:'guitar',brand:'Corona',model:'Modern Plus HSS',name:'Guitar Điện HSS Stainless 24F',price:18000000,icon:'🎸',badges:['premium'],desc:'Body: Alder Solid 44.5mm | Cổ & Fretboard: Roasted Maple\nFret: Jescar 55090S Stainless 24F\nPickup: Corona Atomic Humbucker Set (HSS)\nBridge: Pro Vive-II Trem | Locking Machine Head\nMàu: Olympic White / Daphne Blue / Shell Pink'},
+  {id:'cor-mod-plus-t',cat:'guitar',brand:'Corona',model:'Modern Plus T',name:'Guitar Điện Tele Style Stainless 24F',price:18800000,icon:'🎸',badges:['premium'],desc:'Body: Alder Solid 44.5mm | Cổ & Fretboard: Roasted Maple\nFret: Jescar 55090S Stainless 24F\nPickup: Corona Atomic Humbucker Set\nBridge: Pro Vive-II Trem | Locking Machine Head\nMàu: Olympic White / Black / Shell Pink / Daphne Blue'},
+  {id:'cor-mod-plus-se',cat:'guitar',brand:'Corona',model:'Modern Plus SE',name:'Guitar Điện HSS Classic Stainless 24F',price:18500000,icon:'🎸',badges:[],desc:'Body: Alder Solid 44.5mm | Cổ & Fretboard: Roasted Maple\nFret: Jescar 55090S Stainless 24F\nPickup: Corona Atomic Classic Set (HSS)\nBridge: Pro Vive-II Trem | Locking Machine Head\nMàu: Olympic White / Black / Shell Pink / Daphne Blue'},
+  {id:'cor-prestige',cat:'guitar',brand:'Corona',model:'Prestige Standard',name:'Guitar Điện Les Paul Style – Mahogany',price:21500000,icon:'🎸',badges:['premium'],desc:'Body: Mahogany | Top: 15mm Maple + Flame Maple Veneer\nCổ: Mahogany (Standard C) | Fretboard: Indian Laurel (12")\nFret: Nickel Medium 22F\nPickup: Corona Duke Classic Humbucker Set\nBridge: Tune-O-Matic\nMàu: Black Burst / Lemon Burst / Honey Burst / Gold Top\nKèm: Case, Wrench'},
+  {id:'cor-gravity-nt',cat:'guitar',brand:'Corona',model:'Gravity NT',name:'Guitar Điện Headless – Stainless 24F (từ)',price:27600000,icon:'🎸',badges:['premium'],desc:'Body: Basswood/Mahogany/Ash 2-Piece | Top: Flame Maple Veneer\nCổ: Roasted Maple / Wenge / Rosewood\nFretboard: Roasted Maple / Wenge / Rosewood (25.5" Scale / 12")\nFret: Jescar 55090S Stainless 24F\nPickup: Corona Atomic Humbucker Set\nBridge: Gravity Fixed Bridge\nMàu: Blue Jean Blue / Black Burst / Brown Burst / Yellow Natural\nGiá từ 27.600.000đ (Wenge) đến 34.000.000đ (Rosewood)'},
+  // BASS - CORONA
+  {id:'cor-jazz-bass',cat:'bass',brand:'Corona',model:'Standard Jazz Bass',name:'Bass Điện Jazz Bass – Indian Laurel',price:13500000,icon:'🎸',badges:[],desc:'Body: Alder Solid 42mm\nCổ: Hard Maple (Standard C) | Fretboard: Indian Laurel hoặc Maple (9.5")\nFret: Medium Jumbo 20F / 34" Scale\nPickup: Dyna Classic Jazz Set\nControl: 2 Volume, 1 Tone\nMàu: Black / Olympic White / Daphne Blue\nKèm: Case, Wrench'},
+  {id:'cor-jazz-bass-active',cat:'bass',brand:'Corona',model:'Standard Plus Jazz Bass w/Active',name:'Bass Điện Jazz Bass Active Preamp',price:16500000,icon:'🎸',badges:[],desc:'Body: Alder Solid 42mm | Cổ & Fretboard: Roasted Maple (9.5")\nFret: Medium Jumbo 20F / 34" Scale\nPickup: Dyna Classic Jazz Set\nPreamp: 4-Band EQ Active\nMàu: Black / Olympic White / Daphne Blue\nKèm: Case, Wrench'},
+  {id:'cor-p-bass',cat:'bass',brand:'Corona',model:'Standard P-Bass',name:'Bass Điện Precision Bass',price:13500000,icon:'🎸',badges:[],desc:'Body: Alder Solid 42mm\nCổ: Hard Maple (Standard C)\nFretboard: Indian Laurel hoặc Maple (9.5")\nFret: Medium Jumbo 20F / 34" Scale\nPickup: Dyna Classic P-Bass Set\nMàu: Black / Olympic White / Daphne Blue\nKèm: Case, Wrench'},
+  {id:'cor-std-plus-jazz',cat:'bass',brand:'Corona',model:'Standard Plus Jazz Bass',name:'Bass Điện P-Bass Style',price:14000000,icon:'🎸',badges:[],desc:'Body: Alder Solid 42mm\nCổ: Hard Maple | Fretboard: Indian Laurel hoặc Maple (9.5")\nFret: Medium Jumbo 20F / 34" Scale\nPickup: Dyna Classic P-Bass Set\nMàu: Black / Olympic White / Daphne Blue\nKèm: Case, Wrench'},
+  // GUITAR - EART
+  {id:'eart-gw2',cat:'guitar',brand:'Eart',model:'GW-2',name:'Guitar Điện Multi-Scale – Roasted Padauk',price:12500000,icon:'🎸',badges:[],desc:'Scale: 25.5" (648mm)\nBody: Roasted Padauk+Poplar Burl / Roasted Ash\nCổ: 5-Piece Roasted Maple/Padauk\nFretboard: India Rosewood (9.5"-14" Compound)\nFret: 24F Rounded Ends Medium Jumbo Stainless Steel\nPickup: Eart Custom Classic 57 Alnico-V Set\nMàu: Solid Black/Blue/Purple/Natural'},
+  {id:'eart-gw2te',cat:'guitar',brand:'Eart',model:'GW-2TE',name:'Guitar Điện Headless – Roasted Mahogany',price:26000000,icon:'🎸',badges:['premium'],desc:'Scale: 25.5" (648mm)\nBody: Roasted Mahogany | Cổ: Roasted Maple\nFretboard: India Rosewood (9.5"-14" Compound)\nFret: 24F Rounded Ends Medium Jumbo Stainless Steel\nPickup: Eart Custom Artones-HB115\nMàu: Black/Silver/Blue'},
+  {id:'eart-gw2pro',cat:'guitar',brand:'Eart',model:'GW2-PRO',name:'Guitar Điện Multi-Scale – Roasted Ash',price:17000000,icon:'🎸',badges:[],desc:'Scale: 25.5" (648mm) | Body: Roasted Ash\nCổ: 5-Piece Wenge/Padauk | Fretboard: India Rosewood\nFret: 24F Jumbo Stainless Steel\nPickup: Eart Custom 57PRO Alnico-V Set\nMàu: Trans White/Natural/Solid Black/Black Burst/Blue Burst/Red Burst/Purple Burst'},
+  {id:'eart-gw2pro-custom',cat:'guitar',brand:'Eart',model:'GW2-PRO-CUSTOM',name:'Guitar Điện Time Machine Pickup – Custom',price:27000000,icon:'🎸',badges:['premium'],desc:'Scale: 25.5" (648mm) | Body: Roasted Ash\nCổ: 5-Piece Wenge/Padauk | Fretboard: India Rosewood\nFret: 24F Jumbo Stainless Steel\nPickup: Eart Custom Time Machine Set (EGCTM)\nMàu: Blue Burst/Red Burst/White/Natural/Solid Black/Purple Burst'},
+  {id:'eart-gw6f',cat:'guitar',brand:'Eart',model:'GW-6F',name:'Guitar Điện Fan-Fret 6 dây – Crackle Finish',price:19000000,icon:'🎸',badges:[],desc:'Scale: 25.5"-26.5" (648-673mm) | Nặng: 2.7kg\nBody: Roasted Mahogany | Cổ: Roasted Maple\nFretboard: India Rosewood (18")\nFret: 24F Jumbo Stainless Steel\nPickup: Eart Custom Artones-FH\nMàu: White-Red Crackle / White-Black Crackle / Black-Red Crackle / Red-Black Crackle'},
+  {id:'eart-gw7f',cat:'guitar',brand:'Eart',model:'GW-7F',name:'Guitar Điện 7 dây Fan-Fret – Roasted Ash',price:22000000,icon:'🎸',badges:['premium'],desc:'Scale: 25.5"-26.25" (648-673mm) | Nặng: 2.7kg\nBody: Roasted Ash | Cổ: 5-Piece Roasted Maple/Padauk\nFretboard: India Rosewood (18")\nFret: 24F Jumbo Stainless Steel\nPickup: Eart Custom HP7H Set\nMàu: Black/White'},
+  // ACOUSTIC DRUMS - Kingzbeat
+  {id:'kb-ykp',cat:'drums-acoustic',brand:'Kingzbeat',model:'YKP Series',name:'Bộ Trống Cơ – Poplar 7.2mm',price:13800000,icon:'🥁',badges:[],desc:'Chất liệu: Poplar 3-ply 7.2mm\nBearing edge: Half-round 45°\nDrum heads: Single clear batter, snare coated\nPedal: P2000 Double Chain Longboard\nLug: Bass x8, Snare x8, Floor Tom x6, Tom x5\nHoop: 1.2mm Triple-Flanged\n⚠ Không bao gồm cymbal và ghế trống'},
+  {id:'kb-akg',cat:'drums-acoustic',brand:'Kingzbeat',model:'AKG Series',name:'Bộ Trống Cơ – REMO® UC + P3000 Pedal',price:18000000,icon:'🥁',badges:[],desc:'Chất liệu: Poplar 3-ply 7.2mm\nBearing edge: Half-round 45°\nDrum heads: REMO® UC series\nPedal: P3000 Double Chain Longboard\nLug: Bass x8, Snare x8, Floor Tom x8, Tom x6\nHoop: 1.6mm Triple-Flanged\n⚠ Không bao gồm cymbal và ghế trống'},
+  {id:'kb-ckg',cat:'drums-acoustic',brand:'Kingzbeat',model:'CKG Series',name:'Bộ Trống Cơ – Shield Tom System',price:20500000,icon:'🥁',badges:[],desc:'Chất liệu: Poplar 3-ply 7.2mm\nBearing edge: Half-round 45°\nDrum heads: REMO® UC series\nTom system: Shield style Single Shell contact\nPedal: P3000 Double Chain Longboard\nHoop: 1.6mm Triple-Flanged\n⚠ Không bao gồm cymbal và ghế trống'},
+  {id:'kb-skb',cat:'drums-acoustic',brand:'Kingzbeat',model:'SKB Birch',name:'Bộ Trống Cơ Cao Cấp – P5000 Pedal',price:43900000,icon:'🥁',badges:['premium'],desc:'Chất liệu: Poplar 3-ply 7.2mm\nBearing edge: Half-round 45°\nDrum heads: REMO® UC series\nTom system: Wing style Single Shell contact\nPedal: P5000 Double Chain Longboard\nMemory Lock: Ring style\nHoop: 1.6mm Triple-Flanged Chrome-Steel\n⚠ Không bao gồm cymbal và ghế trống'},
+  {id:'kb-cymbal-468',cat:'drums-acoustic',brand:'Kingzbeat',model:'Cymbal Pack MAP468',name:'Bộ Cymbal Steel 14"+16"+20" + Túi',price:1780000,icon:'🔔',badges:[],desc:'Brass-finished stainless steel với các điểm đóng búa tạo âm sáng, rõ\nSet MAP468 gồm: Hi-hat 14" (cặp), Crash 16", Ride 20", túi đựng cymbal\nChất liệu dày hơn, bền hơn'},
+  {id:'kb-cymbal-4680',cat:'drums-acoustic',brand:'Kingzbeat',model:'Cymbal Pack MAP4680',name:'Bộ Cymbal Steel 14"+16"+18"+20" + Túi',price:2150000,icon:'🔔',badges:[],desc:'Brass-finished stainless steel với các điểm đóng búa\nSet MAP4680 gồm: Hi-hat 14" (cặp), Crash 16", Crash 18", Ride 20", túi đựng cymbal'},
+  // DRUM THRONES
+  {id:'kb-t2000',cat:'accessories',brand:'Kingzbeat',model:'T2000',name:'Ghế Trống Tròn – Da 11"',price:1000000,icon:'🪑',badges:[],desc:'Loại ghế: Tròn\nKích thước: 11" đệm da 50mm\nGiỏ: Solid Casting\nChiều cao điều chỉnh: 420-530mm'},
+  {id:'kb-t3000e',cat:'accessories',brand:'Kingzbeat',model:'T3000E',name:'Ghế Trống Tròn – Da 13"',price:1450000,icon:'🪑',badges:[],desc:'Loại ghế: Tròn\nKích thước: 13" đệm da 60mm\nGiỏ: Solid Casting\nChiều cao điều chỉnh: 445-575mm'},
+  {id:'kb-t5000sa',cat:'accessories',brand:'Kingzbeat',model:'T5000SA',name:'Ghế Trống Yên Ngựa – Da 15"',price:2300000,icon:'🪑',badges:[],desc:'Loại ghế: Yên ngựa (Saddle)\nKích thước: 15" đệm da dày 90mm\nGiỏ: Solid Casting\nChiều cao điều chỉnh: 510-670mm'},
+  // DRUMSTICKS
+  {id:'jg-5a',cat:'accessories',brand:'Just Groove',model:'5A',name:'Dùi Trống 5A – Hickory',price:205000,icon:'🥢',badges:[],desc:'Gỗ: American Hickory\nDài: 40.64cm (16") | Đường kính: 1.45cm\nĐầu: Teardrop Tip\nMàu: Wood, Pink, White, Blue, Yellow, Red, Black, Green'},
+  {id:'jg-5b',cat:'accessories',brand:'Just Groove',model:'5B',name:'Dùi Trống 5B – Hickory',price:205000,icon:'🥢',badges:[],desc:'Gỗ: American Hickory\nDài: 40.64cm (16") | Đường kính: 1.51cm\nĐầu: Teardrop Tip'},
+  {id:'jg-7a',cat:'accessories',brand:'Just Groove',model:'7A',name:'Dùi Trống 7A – Hickory',price:205000,icon:'🥢',badges:[],desc:'Gỗ: American Hickory\nDài: 39.37cm (15.5") | Đường kính: 1.38cm\nĐầu: Teardrop Tip'},
+  {id:'jg-tora-ex7a',cat:'accessories',brand:'Just Groove',model:'Tora EX7A',name:'Dùi Trống Signature Tora EX7A',price:270000,icon:'🥢',badges:['hot'],desc:'Phiên bản chữ ký đặc biệt\nGỗ: American Hickory\nDài: 39.37cm (15.5") | Đường kính: 1.38cm\nĐầu: Teardrop Tip'},
+  {id:'jg-tora-5a',cat:'accessories',brand:'Just Groove',model:'Tora 5A',name:'Dùi Trống Signature Tora 5A',price:270000,icon:'🥢',badges:['hot'],desc:'Phiên bản chữ ký đặc biệt\nGỗ: American Hickory\nDài: 40.64cm (16") | Đường kính: 1.45cm\nĐầu: Teardrop Tip'},
+  // MIXER
+  {id:'big-mv80',cat:'mixer',brand:'Bigsong',model:'MV-80',name:'Mixer 12 kênh – Bluetooth + USB',price:9700000,icon:'🎚️',badges:[],desc:'Mixer 12 kênh đa năng\n• EQ 3 dải (Bass – Mid – Treble)\n• Hỗ trợ: XLR, 6.35mm, RCA, USB, Bluetooth\n• Công suất: 200W – 800W Max\n• Hiệu ứng DSP: Reverb, Delay tích hợp\n• Bluetooth phát nhạc không dây | USB phát nhạc & thu âm\n• Kèm vali nhôm bảo vệ\n• Phù hợp phòng họp, quán café, sân khấu 300-500 người'},
+  {id:'big-am8fx',cat:'mixer',brand:'Bigsong',model:'AM-8FX',name:'Mixer AM-8FX',price:8500000,icon:'🎚️',badges:[],desc:'Mixer Bigsong AM-8FX chuyên nghiệp'},
+  // NUX WIRELESS
+  {id:'B-8',cat:'wireless',brand:'NUX',model:'B-8',name:'2.4GHz Pedalboard Wireless + Tuner + Boost',price:8000000,icon:'📡',badges:[],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2026/03/B-8_Thumbnails.jpg',desc:'2.4GHz Wireless với Tuner và Boost\n• 24-bit/48kHz | Tầm 60m | Độ trễ 2.5ms\n• Pin: 6.5 giờ | Receiver tích hợp Tuner, Boost, FX Loop\n• Tuning: F#0-C8 | Boost: 0-12dB'},
+  {id:'B-5RC',cat:'wireless',brand:'NUX',model:'B-5RC',name:'2.4GHz Wireless Guitar – 15 giờ pin',price:3800000,icon:'📡',badges:[],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/03/B-5RC_Thumbnails_4.jpg',desc:'Wireless Guitar 2.4GHz\n• 24bit/44.1kHz | Độ trễ <5ms | Tầm 15m\n• Dynamic Range: 108dB | Pin: 15 giờ\n• Auto matching | Hỗ trợ active & passive pickup'},
+  {id:'C-5RC',cat:'wireless',brand:'NUX',model:'C-5RC',name:'5.8GHz Wireless Guitar',price:4100000,icon:'📡',badges:[],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/03/C-5RC_Thumbnails_4.jpg',desc:'Wireless Guitar 5.8GHz\n• 24bit/44.1kHz | Độ trễ <5ms\n• Dynamic Range: 110dB | Pin >4 giờ'},
+  {id:'B-2Plus',cat:'wireless',brand:'NUX',model:'B-2 Plus',name:'2.4GHz Wireless Guitar – 4 kênh',price:2300000,icon:'📡',badges:[],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/03/B-2-PLUS_Thumbnails.jpg',desc:'Wireless Guitar 2.4GHz\n• 24bit/44.1kHz | Độ trễ <5ms | 4 kênh\n• Tầm ≥18m'},
+  {id:'B-3RC',cat:'wireless',brand:'NUX',model:'B-3RC',name:'2.4GHz Wireless Microphone + Hộp sạc',price:4400000,icon:'🎤',badges:[],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2026/03/B-3RC_Thumbnails.jpg',desc:'Wireless Microphone 2.4GHz\n• Kèm micro dynamic | 24bit/44.1kHz\n• Độ trễ <4.8ms | Tầm >30m | Pin 3.5h'},
+  {id:'B-7Pro',cat:'wireless',brand:'NUX',model:'B-7Pro',name:'2.4GHz Pro In-Ear Monitor',price:8000000,icon:'🎧',badges:[],desc:'In-Ear Monitor không dây chuyên nghiệp\n• 24bit/48kHz | Tầm 50m\n• Độ trễ Low: 7.33ms | Pin 6 giờ | THD+N <0.01%'},
+  {id:'B-6Pro',cat:'wireless',brand:'NUX',model:'B-6 Pro',name:'2.4GHz Wireless kèn hơi – Stomp Receiver',price:8950000,icon:'🎷',badges:['new'],
+   thumb:'https://cn.nuxaudio.com/wp-content/uploads/2025/05/B-6-PRO_Thumbnails.jpg',desc:'Wireless cho nhạc cụ hơi (New)\n• 24-bit/48kHz | Dynamic 112dBa | Độ trễ 3.6ms\n• Receiver tích hợp Tuner, Booster, FX LOOP, USB Audio\n• 13 EQ curve | Pin 7h (phát) / 10-11h (thu)'},
+  // NUX DIGITAL DRUMS
+  {id:'DM-110',cat:'drums-digital',brand:'NUX',model:'DM-110',name:'Trống Điện All Mesh – 12 kit (New)',price:10000000,icon:'🥁',badges:['new'],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/03/DM-110_Thumbnails-1-300x240.jpg',
+   images:['https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/04/DM-110_W_01.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/04/DM-110_W_02.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/04/DM-110_W_03.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/04/DM-110_W_04.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/04/DM-110_W_06.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/04/DM-110_W_07.jpg'],
+   desc:'Bộ trống điện DM-110\n• 3 Tom, 1 Snare, 1 Hi-hat, 1 Crash, 1 Ride, 1 Kick (tất cả Dual-zone)\n• Tất cả đầu Mesh | EQ & Reverb\n• 12 kit factory + 3 custom | App miễn phí'},
+  {id:'DM-210',cat:'drums-digital',brand:'NUX',model:'DM-210',name:'Trống Điện All Mesh – 14 triệu',price:14000000,icon:'🥁',badges:[],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/03/DM-210_Thumbnails-1-300x240.jpg',
+   images:['https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/04/DM-210_D_10.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/04/DM-210_W_01.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/04/DM-210_W_02.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/04/DM-210_W_03.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/04/DM-210_W_04.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/04/DM-210_W_05.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/04/DM-210_W_06.jpg'],
+   desc:'Bộ trống điện DM-210\n• Tom 8" x3, Snare 8", Hi-hat 10", Crash 10", Ride 10"\n• Tất cả đầu Mesh | MIDI qua USB\n• Metronome, Coach, EFX'},
+  {id:'DM-310H',cat:'drums-digital',brand:'NUX',model:'DM-310H',name:'Trống Điện 10" Snare – Bluetooth (New)',price:22500000,icon:'🥁',badges:['new'],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/03/DM-310_Thumbnails-1-300x240.jpg',
+   images:['https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/07/DM-310H_W_06.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/07/DM-310H_W_05.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/07/DM-310H_W_04.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/07/DM-310H_W_03.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/07/DM-310H_W_07.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/07/DM-310H_W_09.jpg'],
+   desc:'Bộ trống điện DM-310H\n• Snare 10", Tom 8" x2, Floor Tom 10"\n• Hi-Hat 12", Crash 12" x2, Ride 14"\n• USB audio, TRRS, Metronome, Bluetooth'},
+  {id:'DM-7X',cat:'drums-digital',brand:'NUX',model:'DM-7X',name:'Trống Điện – 3 Tom 2 Crash All Mesh',price:22000000,icon:'🥁',badges:[],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/03/DM-7X_Thumbnails-300x240.jpg',
+   images:['https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/04/DM-7X_W_01.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/04/DM-7X_W_02.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/04/DM-7X_W_04.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/12/DM-7X_W_010.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/12/DM-7X_W_009.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/12/DM-7X_W_011.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/12/DM-7X_W_012.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/12/DM-7X_W_013.jpg'],
+   desc:'DM-7X: 3 Tom, 1 Snare, 1 Hi-Hat, 2 Crash, 1 Ride\n• Tất cả đầu Mesh | MIDI qua USB\n• Metronome, Rhythm, Tempo, EFX'},
+  {id:'DM-8',cat:'drums-digital',brand:'NUX',model:'DM-8',name:'Trống Điện Pro – Dual-zone toàn bộ',price:40000000,icon:'🥁',badges:['premium'],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/03/DM-8_Thumbnails-1.jpg',
+   images:['https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/12/DM-8_W_001.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/12/DM-8_W_002.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/12/DM-8_W_003.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/12/DM-8_W_004.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/12/DM-8_W_005.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/12/DM-8_W_006.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/12/DM-8_W_007.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/12/DM-8_W_008.jpg'],
+   desc:'DM-8 – Trống điện cao cấp\n• Tom x3 (Dual-zone), Snare (head/rim/rimshot)\n• Hi-Hat Dual-zone, Crash x2 Dual-zone, Ride (bow/edge/bell)\n• Tất cả đầu Mesh | MIDI qua USB'},
+  {id:'DP-2000',cat:'drums-digital',brand:'NUX',model:'DP-2000',name:'Pad Trống Điện Chuyên Nghiệp',price:8500000,icon:'🎛️',badges:[],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/04/DP-2000_W_01.jpg',
+   images:['https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/04/DP-2000_W_01.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/04/DP-2000_W_02.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/04/DP-2000_W_03.jpg','https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/04/DP-2000_W_04.jpg'],
+   desc:'Professional Digital Percussion Pad\n• 20 preset | Chức năng Layer | Nhập WAV\n• USB Bluetooth + USB Drive\n• Tương thích e-drum và trống acoustic'},
+  // NUX AMPS
+  {id:'mighty-40mkii',cat:'amp',brand:'NUX',model:'Mighty 40MKII',name:'Amp Guitar Modeling 40W + Bluetooth',price:5700000,icon:'🔊',badges:['hot'],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/03/Electric-Guitar-Amplifiers-Mighty-40BT-MKII-1.jpg',desc:'Mighty 40MKII – 40W Bedroom Amp\n• Công suất điều chỉnh: 0.5W/5W/40W\n• TSAC-HD Amp Modeling | 7 Preset + Pro SCENE\n• Looper 60s + drum machine'},
+  {id:'mighty-20mkii',cat:'amp',brand:'NUX',model:'Mighty 20MKII',name:'Amp Guitar Modeling 20W + Bluetooth',price:4500000,icon:'🔊',badges:[],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/03/Electric-Guitar-Amplifiers-Mighty-20BT-MKII-1.jpg',desc:'Mighty 20MKII – 20W Bedroom Amp\n• TSAC-HD Amp Modeling | 7 Preset ACTIVE\n• Looper 60s + drum machine | USB-B audio'},
+  {id:'mighty-60mkii',cat:'amp',brand:'NUX',model:'Mighty 60MKII',name:'Amp Guitar Modeling 60W + Bluetooth',price:7500000,icon:'🔊',badges:[],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/03/Electric-Guitar-Amplifiers-Mighty-60BT-MKII-1.jpg',desc:'Mighty 60MKII – 60W\n• Công suất: 0.5W/5W/60W\n• TSAC-HD | 7 Preset + Pro SCENE'},
+  {id:'mighty-space',cat:'amp',brand:'NUX',model:'Mighty Space',name:'Amp Modeling Stereo Wireless 30W',price:11000000,icon:'🔊',badges:[],desc:'Amp Modeling không dây stereo\n• 30W | TSAC-HD | 512 IR\n• Pin 7 giờ | Độ trễ 1.2ms | Bluetooth'},
+  {id:'mighty-air',cat:'amp',brand:'NUX',model:'Mighty Air',name:'Amp Modeling Stereo Wireless – Pin 18h',price:4900000,icon:'🔊',badges:[],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/03/Mighty-Air_Thumbnails.jpg',desc:'Amp Modeling không dây\n• Pin 18 giờ | Bluetooth Audio\n• Guitar/Bass models, IR, Acoustic Simulator'},
+  {id:'mighty-lite-bt2',cat:'amp',brand:'NUX',model:'Mighty Lite BT MKII',name:'Desktop Amp 3W + Bluetooth',price:2550000,icon:'🔊',badges:[],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/03/Electric-Guitar-Amplifiers-Mighty-Lite-BT-MKII.jpg',desc:'Desktop Modeling Amp 3W\n• TSAC-HD | 512 IR | 7 Preset | Drum machine\n• App MightyAmp™ | USB-C'},
+  {id:'MP-3',cat:'amp',brand:'NUX',model:'MP-3 Mighty Plug Pro',name:'Tai nghe Amp Guitar & Bass + Bluetooth',price:2700000,icon:'🎧',badges:[],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/03/Mighty-Plug-Pro_Thumbnails.jpg',desc:'Mighty Plug Pro – cắm thẳng vào guitar\n• TSAC-HD | 512 IR | Pin 5h | Độ trễ 1.2ms\n• Stereo DLY/RVB | Bluetooth'},
+  {id:'AC-60',cat:'amp',brand:'NUX',model:'AC-60',name:'Amp Acoustic 60W + Bluetooth',price:8100000,icon:'🔊',badges:[],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/03/AC-60-Stageman-II-Studio_Thumbnails-.jpg',desc:'Acoustic Amp 60W\n• Loa 6.5" + tweeter 1"\n• 2 kênh độc lập + Acoustic IR\n• Drum & Loop 60s | Bluetooth | App'},
+  {id:'DA-30BT',cat:'amp',brand:'NUX',model:'DA-30BT',name:'Drum Amp 30W + Bluetooth',price:3950000,icon:'🔊',badges:[],desc:'Drum Amp 30W\n• 2 loa đồng trục: 10" + 1"\n• 2 input | EQ 2-band | Bluetooth'},
+  {id:'mighty-bass-50bt',cat:'amp',brand:'NUX',model:'Mighty Bass 50BT',name:'Bass Amp Modeling 50W + Bluetooth',price:5500000,icon:'🔊',badges:[],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/03/Mighty-Bass-50-BT_Thumbnails.jpg',desc:'Bass Amp Modeling 50W\n• Loa 6.5" | Gate, EFX, Amp, IR, Mod, Reverb\n• Drum & Loop | Bluetooth | App'},
+  // NUX GUITAR FX
+  {id:'MG-300MKII',cat:'pedal',brand:'NUX',model:'MG-300MKII',name:'Guitar Multi-FX Processor (New & Hot)',price:4200000,icon:'🎸',badges:['new','hot'],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/03/MG-300-MKII_Thumbnails.jpg',desc:'Compact Amp Modeler & Multi-FX\n• TSAC-HD white-box amp modeling\n• 25 guitar cab, 8 bass cab, 3 acoustic IR, 24 IR user slot\n• Looper + Drum machine | Live streaming | QuickTone editor'},
+  {id:'MG-101',cat:'pedal',brand:'NUX',model:'MG-101',name:'Guitar Modelling Processor (New & Hot)',price:2750000,icon:'🎸',badges:['new','hot'],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/03/MG-101_Thumbnails.jpg',desc:'Guitar Modeling Processor\n• TSAC-HD | 25 amp electric classic\n• Looper + drum machine | Live streaming TRRS'},
+  {id:'MG-400',cat:'pedal',brand:'NUX',model:'MG-400',name:'Guitar & Bass Processor – LCD 2.8"',price:4900000,icon:'🎸',badges:[],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/03/MG-400_Thumbnails.jpg',desc:'Guitar & Bass Multi-FX\n• LCD màu 2.8" | 10 khối tín hiệu độc lập\n• 512 IR | Amp guitar + bass + acoustic\n• USB recording | QuickTone™ editor'},
+  {id:'NME-5',cat:'pedal',brand:'NUX',model:'Trident (NME-5)',name:'Integrated Guitar Effects – Pro',price:11000000,icon:'🎸',badges:[],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/03/TRIDENT-NME-5_Thumbnails-1.jpg',desc:'Trident – Effect guitar tích hợp cao cấp\n• 1024 IR | 96 preset | Looper 60s\n• USB audio, MIDI IN/OUT, Stereo DI out\n• Trident Editor™'},
+  {id:'MG-30',cat:'pedal',brand:'NUX',model:'MG-30',name:'Versatile Guitar Modeler – LCD 4"',price:7800000,icon:'🎸',badges:[],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/03/MG-30_Thumbnails.jpg',desc:'Versatile Modeler\n• LCD 4" | 11 khối | 1024 IR\n• Độ trễ 2ms | 2 DSP | Kèm NMP-2'},
+  // EFFECTS PEDALS NUX
+  {id:'NMA-3AAP',cat:'pedal',brand:'NUX',model:'Amp Academy Stomp',name:'Stereo Amp Modeler – 111dB',price:7300000,icon:'🎛️',badges:[],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/03/Amp-Academy-Stomp-NMA-3AAP_Thumbnails.jpg',desc:'Amp Academy Stomp – Stereo Amp Modeler\n• TSAC-4K + Stereo CYBER IR™ 1024-mẫu\n• LCD 2.86" | 27 preset, 3 scene, 60 IR\n• 111dB | Độ trễ 2ms | USB-C'},
+  {id:'loop-core-stereo',cat:'pedal',brand:'NUX',model:'Loop Core Stereo',name:'Stereo Looper – 6h ghi âm 99 bộ nhớ',price:3000000,icon:'🎛️',badges:[],desc:'Stereo Looper\n• LCD HD 1.9" | 99 bộ nhớ | 6h ghi âm\n• 50 rhythm track | Tap Tempo | MIDI'},
+  {id:'NCA-1',cat:'pedal',brand:'NUX',model:'Amp Core Studio (NCA-1)',name:'Amp Modeler Pedal – 26 amp model',price:3200000,icon:'🎛️',badges:[],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/03/Amp-Core-Studio-NCA-1_Thumbnails.jpg',desc:'Amp Core Studio\n• 26 amp model | TSAC-HD\n• 33 IR + 12 slot custom | 3 Scene\n• Độ trễ 1.2ms | 110dB'},
+  {id:'NDD-7',cat:'pedal',brand:'NUX',model:'Tape Echo (NDD-7)',name:'Tape Echo Delay – 1600ms Stereo',price:4500000,icon:'🎛️',badges:[],desc:'Tape Echo Delay\n• Delay stereo 1600ms | 7 đầu tape\n• Looper 40s | MIDI In/Out | OLED'},
+  {id:'NDO-5',cat:'pedal',brand:'NUX',model:'Ace of Tone (NDO-5)',name:'Dual Overdrive – Tubeman + Morning Star',price:3000000,icon:'🎛️',badges:[],desc:'Dual Overdrive\n• Tubeman MKII + Morning Star\n• FAT mode + SHINE mode | 18V/9V toggle'},
+  {id:'time-core2',cat:'pedal',brand:'NUX',model:'Time Core Deluxe MKII',name:'Delay Pedal – 7 loại delay',price:2500000,icon:'🎛️',badges:[],desc:'7 loại delay: Analog/Tape/Mod/Pan/Verb/Reverse + Looper 40s\n• Smart Tap Tempo (1580ms max) | Stereo'},
+  {id:'verb-core',cat:'pedal',brand:'NUX',model:'Verb Core Deluxe',name:'Reverb Pedal – 8 loại reverb',price:2500000,icon:'🎛️',badges:[],desc:'8 loại reverb: Room/Hall/Plate/Damp/Shim/Spring/Tre-Verb/Mod-Verb\n• Holding Freeze | Stereo'},
+  {id:'mod-core2',cat:'pedal',brand:'NUX',model:'Mod Core Deluxe MKII',name:'Modulation – 8 loại',price:2500000,icon:'🎛️',badges:[],desc:'8 loại mod: ST Chorus, CE-1, SCF, U-Vibe, PH-100\n• Parallel routing | Stereo'},
+  {id:'NTU-3',cat:'pedal',brand:'NUX',model:'Flow Tune MKII',name:'Mini Pedal Tuner – ±0.1 Cent',price:1750000,icon:'🎛️',badges:[],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/03/Flow-Tune-NTU-3-MKII_Thumbnails.jpg',desc:'Mini Pedal Tuner\n• Range A0-C8 | ±0.1 Cent | A4 430-450Hz\n• 4 Tuning Mode | 3 Display Mode'},
+  {id:'NCO-2',cat:'pedal',brand:'NUX',model:'Drive Core Deluxe MKII',name:'Overdrive – 8 mạch drive',price:2300000,icon:'🎛️',badges:[],desc:'Overdrive\n• 8 mạch drive iconic | Analog 100%\n• True Bypass | Post Boost'},
+  {id:'NDL-3',cat:'pedal',brand:'NUX',model:'HOOK Drum & Loop',name:'Mini Looper – 11 rhythm style',price:2300000,icon:'🎛️',badges:[],desc:'Mini Looper với Drums\n• 11 rhythm style | 6 phút ghi âm\n• True-bypass | Headphone out | USB-C'},
+  {id:'NRN-1',cat:'pedal',brand:'NUX',model:'Huminator',name:'Noise Gate (New)',price:1200000,icon:'🎛️',badges:['new'],desc:'Noise Gate\n• Loại bỏ tạp âm hiệu quả\n• 18V internal | 2 mode: Reduction & Mute\n• Effects loop tích hợp | Analog 100%'},
+  // NUX KEYBOARDS
+  {id:'NPK-10',cat:'keyboard',brand:'NUX',model:'NPK-10',name:'Piano Điện 88 phím – Graded Hammer',price:10500000,icon:'🎹',badges:[],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/03/NPK-10_Thumbnails.jpg',desc:'Piano Điện 88 phím\n• Graded Hammer Action 3\n• Dream 5708 | 12 tone | 30 demo | 189 voice\n• Bluetooth | Kèm sustain pedal'},
+  {id:'NPK-20',cat:'keyboard',brand:'NUX',model:'NPK-20',name:'Piano Điện 271 âm + Bluetooth + Mic',price:14000000,icon:'🎹',badges:[],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/03/NPK-20_Thumbnails.jpg',desc:'Piano Điện đa năng\n• 271 âm (7 nhóm) | Dual + Split\n• Bluetooth + App | Reverb/Chorus/Delay\n• Mic input với gain độc lập'},
+  {id:'NEK-110',cat:'keyboard',brand:'NUX',model:'NEK-110',name:'Keyboard 61 phím – 700 âm + Bluetooth',price:5100000,icon:'🎹',badges:[],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/06/NEK-110_Thumbnails.jpg',desc:'Keyboard 61 phím\n• 700 âm | 100 style | 100 demo\n• 40 loại effect | Pin sạc | Bluetooth'},
+  {id:'NTK-49',cat:'keyboard',brand:'NUX',model:'NTK-49',name:'MIDI Keyboard 49 phím – Semi-weighted',price:5600000,icon:'🎹',badges:['new'],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/03/NTK-49_Thumbnails.jpg',desc:'MIDI Controller 49 phím\n• Semi-weighted velocity-sensitive\n• 8 knob, 9 slider | Arpeggiator\n• DAW Controls đầy đủ'},
+  {id:'NTK-61',cat:'keyboard',brand:'NUX',model:'NTK-61',name:'MIDI Keyboard 61 phím + 8 Pad (New)',price:6800000,icon:'🎹',badges:['new'],
+   thumb:'https://nuxaudio.cherubtechnology.com/wp-content/uploads/2025/03/NTK-61_Thumbnails.jpg',desc:'MIDI Controller 61 phím\n• 8 pad velocity-sensitive (Bank A/B=16 pad)\n• 8 knob, 9 slider | DAW Controls đầy đủ'},
+  // PRO AUDIO
+  {id:'NAI-24',cat:'pro-audio',brand:'NUX',model:'NAI-24',name:'USB Audio Interface 2in/4out – 32bit/192kHz (New)',price:6100000,icon:'🎙️',badges:['new'],desc:'USB Audio Interface\n• 2-in/4-out | 32-bit/192kHz\n• Preamp Class-A discrete | 48V phantom\n• 2 headphone amp | USB powered'},
+  {id:'NFM-03',cat:'pro-audio',brand:'NUX',model:'NFM-03',name:'Studio Monitor – 90W 3" Neodymium (New)',price:6300000,icon:'🔊',badges:['new'],desc:'Studio Reference Monitor\n• 90W RMS | Driver 3" neodymium + tweeter 3/4"\n• DSP kỹ thuật số | AXON Studio software\n• Max SPL 107dB | Đến 55Hz'},
+  // NUX ACCESSORIES
+  {id:'NIP-Z10',cat:'accessories',brand:'NUX',model:'Zeus (NIP-Z10)',name:'Nguồn cách ly 10 ngõ ra',price:5500000,icon:'⚡',badges:[],desc:'All-isolated Power Supply\n• 10 ngõ ra cách ly | USB 5V/1.5A\n• 100-240V universal | Bảo vệ quá nhiệt/dòng'},
+  {id:'NIP-Z6',cat:'accessories',brand:'NUX',model:'Zeus.Jr (NIP-Z6)',name:'Nguồn cách ly 6 ngõ ra',price:2550000,icon:'⚡',badges:[],desc:'All-isolated Power Supply\n• 6 ngõ ra cách ly | LED chỉ thị'},
+  {id:'NPB-S',cat:'accessories',brand:'NUX',model:'NPB-S',name:'Pedal Board Size S + Túi',price:2000000,icon:'🎒',badges:[],desc:'Pedal Board với túi đựng – Size S'},
+  {id:'NPB-M',cat:'accessories',brand:'NUX',model:'NPB-M',name:'Pedal Board Size M + Túi',price:2200000,icon:'🎒',badges:[],desc:'Pedal Board với túi đựng – Size M'},
+  {id:'ACD-006A',cat:'accessories',brand:'NUX',model:'ACD-006A',name:'Adapter Pedal NUX 9V 500mA',price:250000,icon:'⚡',badges:[],desc:'Adapter cho tất cả Pedal NUX\n• 9V 500mA, polarity: centre negative\n• Chuẩn: US / Europe / Australia / UK'},
+];
+
+// STATE
+let cart=[], activeFilter='all', searchQ='';
+
+function fmt(n){return n.toLocaleString('vi-VN')+' ₫'}
+
+function getVisible(){
+  return P.filter(p=>{
+    const mc = activeFilter==='all'||p.cat===activeFilter;
+    const q=searchQ.toLowerCase();
+    const ms=!q||p.model.toLowerCase().includes(q)||p.name.toLowerCase().includes(q)||p.brand.toLowerCase().includes(q)||(p.desc||'').toLowerCase().includes(q);
+    return mc&&ms;
+  });
+}
+
+function renderGrid(){
+  const grid=document.getElementById('grid');
+  const v=getVisible();
+  document.getElementById('result-count').textContent=v.length;
+  grid.innerHTML=v.map(p=>`
+    <div class="card" onclick="openModal('${p.id}')">
+      <div class="card-img">
+        ${p.badges.length?`<div class="card-badges">${p.badges.map(b=>`<span class="badge badge-${b}">${b==='premium'?'⭐ CAO CẤP':b.toUpperCase()}</span>`).join('')}</div>`:''}
+        ${p.thumb?`<img src="${p.thumb}" alt="${p.model}" loading="lazy" onerror="this.style.display='none';this.parentNode.querySelector('.fallback-icon').style.display='flex'">
+          <span class="fallback-icon" style="display:none;font-size:52px;position:absolute">${p.icon}</span>`
+          :`<span>${p.icon}</span>`}
+      </div>
+      <div class="card-body">
+        <div class="card-brand">${p.brand}</div>
+        <div class="card-model">${p.model}</div>
+        <div class="card-name">${p.name}</div>
+        <div class="card-price">${fmt(p.price)}</div>
+        <button class="add-btn" onclick="event.stopPropagation();addToCart('${p.id}')">+ Thêm vào giỏ</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filter(cat,btn){
+  activeFilter=cat;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderGrid();
+}
+
+document.getElementById('search').addEventListener('input',e=>{searchQ=e.target.value;renderGrid()});
+
+function openModal(id){
+  const p=P.find(x=>x.id===id);
+  const hasGallery = p.images && p.images.length>0;
+  const galleryHTML = hasGallery ? `
+    <div class="modal-gallery">
+      <div class="gallery-main" id="gMain">
+        <img id="gMainImg" src="${p.images[0]}" alt="${p.model} 1">
+        <button class="g-prev" onclick="gNav(-1)">&#8592;</button>
+        <button class="g-next" onclick="gNav(1)">&#8594;</button>
+        <span class="gallery-counter" id="gCounter">1 / ${p.images.length}</span>
+      </div>
+      <div class="gallery-thumbs" id="gThumbs">
+        ${p.images.map((img,i)=>`
+          <div class="g-thumb ${i===0?'active':''}" onclick="gSet(${i})" id="gThumb${i}">
+            <img src="${img}" alt="${p.model} ${i+1}" loading="lazy">
+          </div>`).join('')}
+      </div>
+    </div>` : (p.thumb ? `<div style="width:100%;height:240px;border-radius:10px;overflow:hidden;margin-bottom:16px;background:#0a0909;border:1px solid var(--border)"><img src="${p.thumb}" style="width:100%;height:100%;object-fit:contain" alt="${p.model}"></div>` : `<div style="font-size:64px;text-align:center;padding:16px 0">${p.icon}</div>`);
+
+  document.getElementById('modal-content').innerHTML=`
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px">
+      <div>
+        <div class="modal-brand">${p.brand}</div>
+        <div class="modal-model">${p.model}</div>
+        <div class="modal-fullname">${p.name}</div>
+        ${p.badges.map(b=>`<span class="badge badge-${b}" style="margin-top:6px;display:inline-block">${b==='premium'?'⭐ CAO CẤP':b.toUpperCase()}</span>`).join(' ')}
+      </div>
+      <button class="modal-close-btn" onclick="closeModal()" style="flex-shrink:0">✕</button>
+    </div>
+    ${galleryHTML}
+    <div class="modal-price">${fmt(p.price)}</div>
+    <div class="modal-desc">${p.desc||''}</div>
+    <div class="modal-actions">
+      <button class="modal-add" onclick="addToCart('${p.id}');closeModal()">🛒 Thêm vào giỏ</button>
+      <a href="https://zalo.me/0993997993" target="_blank" style="flex:1;padding:12px;background:transparent;border:1px solid #0068ff;border-radius:10px;color:#0068ff;font-weight:700;font-size:13px;cursor:pointer;text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px">💬 Hỏi Zalo</a>
+    </div>
+  `;
+  // gallery state
+  if(hasGallery){
+    window._gImgs = p.images;
+    window._gIdx = 0;
+  }
+  document.getElementById('modal-bg').classList.add('open');
+}
+
+function gSet(i){
+  const imgs=window._gImgs;
+  if(!imgs)return;
+  window._gIdx=i;
+  document.getElementById('gMainImg').src=imgs[i];
+  document.getElementById('gCounter').textContent=`${i+1} / ${imgs.length}`;
+  document.querySelectorAll('.g-thumb').forEach((t,j)=>t.classList.toggle('active',j===i));
+  document.getElementById('gThumb'+i).scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+}
+function gNav(dir){
+  const imgs=window._gImgs;
+  if(!imgs)return;
+  const next=(window._gIdx+dir+imgs.length)%imgs.length;
+  gSet(next);
+}
+function closeModal(e){if(!e||e.target===document.getElementById('modal-bg'))document.getElementById('modal-bg').classList.remove('open')}
+
+function addToCart(id){
+  const p=P.find(x=>x.id===id);
+  const ex=cart.find(x=>x.id===id);
+  if(ex)ex.qty++;else cart.push({...p,qty:1});
+  updateCart();showToast('✓ Đã thêm '+p.model);
+}
+function removeFromCart(id){cart=cart.filter(x=>x.id!==id);updateCart()}
+function changeQty(id,d){const i=cart.find(x=>x.id===id);if(!i)return;i.qty+=d;if(i.qty<=0)removeFromCart(id);else updateCart()}
+function updateCart(){
+  const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const count=cart.reduce((s,i)=>s+i.qty,0);
+  document.getElementById('cart-count').textContent=count;
+  document.getElementById('cart-total').textContent=fmt(total);
+  const el=document.getElementById('cart-items');
+  if(!cart.length){el.innerHTML='<div class="cart-empty">🛒<p>Giỏ hàng trống</p></div>';return}
+  el.innerHTML=cart.map(i=>`
+    <div class="cart-item">
+      <div class="ci-icon">${i.icon}</div>
+      <div class="ci-info">
+        <div class="ci-model">${i.brand} ${i.model}</div>
+        <div class="ci-name">${i.name}</div>
+        <div class="ci-price">${fmt(i.price)}</div>
+        <div class="ci-qty">
+          <button class="qty-btn" onclick="changeQty('${i.id}',-1)">−</button>
+          <span class="qty-val">${i.qty}</span>
+          <button class="qty-btn" onclick="changeQty('${i.id}',1)">+</button>
+        </div>
+      </div>
+      <button class="ci-remove" onclick="removeFromCart('${i.id}')">✕</button>
+    </div>`).join('');
+}
+function toggleCart(){
+  document.getElementById('cart-drawer').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('open');
+}
+function checkout(){
+  if(!cart.length){showToast('⚠ Giỏ hàng trống!');return}
+  const lines=cart.map(i=>`• ${i.brand} ${i.model} x${i.qty}: ${fmt(i.price*i.qty)}`).join('\n');
+  const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  alert(`📋 ĐƠN HÀNG DRAGON PIT\n\n${lines}\n\n💰 Tổng: ${fmt(total)}\n\nVui lòng liên hệ Zalo 0993 997 993 để xác nhận!`);
+}
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000)}
+
+renderGrid();
+</script>
+</body>
+</html>
