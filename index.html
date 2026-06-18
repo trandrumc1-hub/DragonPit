@@ -306,9 +306,10 @@ footer{background:#090808;border-top:1px solid var(--border);padding:40px 24px 2
 </div>
 
 <div class="filter-bar">
-  <button class="filter-btn active" onclick="filter('all',this)">🎵 Tất cả</button>
+  <button class="filter-btn" onclick="filter('all',this)">🎵 Tất cả</button>
   <button class="filter-btn" onclick="filter('guitar',this)">🎸 Guitar</button>
   <button class="filter-btn" onclick="filter('bass',this)">🎸 Bass</button>
+  <button class="filter-btn active" onclick="filter('drumkitz',this)">🥁 Drumkitz</button>
   <button class="filter-btn" onclick="filter('drums-acoustic',this)">🥁 Trống Cơ</button>
   <button class="filter-btn" onclick="filter('drums-digital',this)">🎛️ Trống Điện</button>
   <button class="filter-btn" onclick="filter('wireless',this)">📡 Wireless</button>
@@ -429,22 +430,31 @@ const P = [
   {id:'eart-gw6f',cat:'guitar',brand:'Eart',model:'GW-6F',name:'Guitar Điện Fan-Fret 6 dây – Crackle Finish',price:19000000,icon:'🎸',badges:[],desc:'Scale: 25.5"-26.5" (648-673mm) | Nặng: 2.7kg\nBody: Roasted Mahogany | Cổ: Roasted Maple\nFretboard: India Rosewood (18")\nFret: 24F Jumbo Stainless Steel\nPickup: Eart Custom Artones-FH\nMàu: White-Red Crackle / White-Black Crackle / Black-Red Crackle / Red-Black Crackle'},
   {id:'eart-gw7f',cat:'guitar',brand:'Eart',model:'GW-7F',name:'Guitar Điện 7 dây Fan-Fret – Roasted Ash',price:22000000,icon:'🎸',badges:['premium'],desc:'Scale: 25.5"-26.25" (648-673mm) | Nặng: 2.7kg\nBody: Roasted Ash | Cổ: 5-Piece Roasted Maple/Padauk\nFretboard: India Rosewood (18")\nFret: 24F Jumbo Stainless Steel\nPickup: Eart Custom HP7H Set\nMàu: Black/White'},
   // ACOUSTIC DRUMS - Kingzbeat
-  {id:'kb-ykp',cat:'drums-acoustic',brand:'Kingzbeat',model:'YKP Series',name:'Bộ Trống Cơ – Poplar 7.2mm',price:13800000,icon:'🥁',badges:[],desc:'Chất liệu: Poplar 3-ply 7.2mm\nBearing edge: Half-round 45°\nDrum heads: Single clear batter, snare coated\nPedal: P2000 Double Chain Longboard\nLug: Bass x8, Snare x8, Floor Tom x6, Tom x5\nHoop: 1.2mm Triple-Flanged\n⚠ Không bao gồm cymbal và ghế trống'},
-  {id:'kb-akg',cat:'drums-acoustic',brand:'Kingzbeat',model:'AKG Series',name:'Bộ Trống Cơ – REMO® UC + P3000 Pedal',price:18000000,icon:'🥁',badges:[],desc:'Chất liệu: Poplar 3-ply 7.2mm\nBearing edge: Half-round 45°\nDrum heads: REMO® UC series\nPedal: P3000 Double Chain Longboard\nLug: Bass x8, Snare x8, Floor Tom x8, Tom x6\nHoop: 1.6mm Triple-Flanged\n⚠ Không bao gồm cymbal và ghế trống'},
-  {id:'kb-ckg',cat:'drums-acoustic',brand:'Kingzbeat',model:'CKG Series',name:'Bộ Trống Cơ – Shield Tom System',price:20500000,icon:'🥁',badges:[],desc:'Chất liệu: Poplar 3-ply 7.2mm\nBearing edge: Half-round 45°\nDrum heads: REMO® UC series\nTom system: Shield style Single Shell contact\nPedal: P3000 Double Chain Longboard\nHoop: 1.6mm Triple-Flanged\n⚠ Không bao gồm cymbal và ghế trống'},
-  {id:'kb-skb',cat:'drums-acoustic',brand:'Kingzbeat',model:'SKB Birch',name:'Bộ Trống Cơ Cao Cấp – P5000 Pedal',price:43900000,icon:'🥁',badges:['premium'],desc:'Chất liệu: Poplar 3-ply 7.2mm\nBearing edge: Half-round 45°\nDrum heads: REMO® UC series\nTom system: Wing style Single Shell contact\nPedal: P5000 Double Chain Longboard\nMemory Lock: Ring style\nHoop: 1.6mm Triple-Flanged Chrome-Steel\n⚠ Không bao gồm cymbal và ghế trống'},
-  {id:'kb-cymbal-468',cat:'drums-acoustic',brand:'Kingzbeat',model:'Cymbal Pack MAP468',name:'Bộ Cymbal Steel 14"+16"+20" + Túi',price:1780000,icon:'🔔',badges:[],desc:'Brass-finished stainless steel với các điểm đóng búa tạo âm sáng, rõ\nSet MAP468 gồm: Hi-hat 14" (cặp), Crash 16", Ride 20", túi đựng cymbal\nChất liệu dày hơn, bền hơn'},
-  {id:'kb-cymbal-4680',cat:'drums-acoustic',brand:'Kingzbeat',model:'Cymbal Pack MAP4680',name:'Bộ Cymbal Steel 14"+16"+18"+20" + Túi',price:2150000,icon:'🔔',badges:[],desc:'Brass-finished stainless steel với các điểm đóng búa\nSet MAP4680 gồm: Hi-hat 14" (cặp), Crash 16", Crash 18", Ride 20", túi đựng cymbal'},
+  {id:'kb-ykp',cat:'drumkitz',brand:'Kingzbeat',model:'YKP Series',name:'Bộ Trống Cơ – Poplar 7.2mm',price:13800000,icon:'🥁',badges:[],
+   thumb:'images/AD_ykp.jpg',desc:'Chất liệu: Poplar 3-ply 7.2mm\nBearing edge: Half-round 45°\nDrum heads: Single clear batter, snare coated\nPedal: P2000 Double Chain Longboard\nLug: Bass x8, Snare x8, Floor Tom x6, Tom x5\nHoop: 1.2mm Triple-Flanged\n⚠ Không bao gồm cymbal và ghế trống'},
+  {id:'kb-akg',cat:'drumkitz',brand:'Kingzbeat',model:'AKG Series',name:'Bộ Trống Cơ – REMO® UC + P3000 Pedal',price:18000000,icon:'🥁',badges:[],
+   thumb:'images/AD_akg.png',desc:'Chất liệu: Poplar 3-ply 7.2mm\nBearing edge: Half-round 45°\nDrum heads: REMO® UC series\nPedal: P3000 Double Chain Longboard\nLug: Bass x8, Snare x8, Floor Tom x8, Tom x6\nHoop: 1.6mm Triple-Flanged\n⚠ Không bao gồm cymbal và ghế trống'},
+  {id:'kb-ckg',cat:'drumkitz',brand:'Kingzbeat',model:'CKG Series',name:'Bộ Trống Cơ – Shield Tom System',price:20500000,icon:'🥁',badges:[],
+   thumb:'images/AD_ckg.jpg',desc:'Chất liệu: Poplar 3-ply 7.2mm\nBearing edge: Half-round 45°\nDrum heads: REMO® UC series\nTom system: Shield style Single Shell contact\nPedal: P3000 Double Chain Longboard\nHoop: 1.6mm Triple-Flanged\n⚠ Không bao gồm cymbal và ghế trống'},
+  {id:'kb-skb',cat:'drumkitz',brand:'Kingzbeat',model:'SKB Birch',name:'Bộ Trống Cơ Cao Cấp – P5000 Pedal',price:43900000,icon:'🥁',badges:['premium'],
+   thumb:'images/AD_skb.jpg',desc:'Chất liệu: Poplar 3-ply 7.2mm\nBearing edge: Half-round 45°\nDrum heads: REMO® UC series\nTom system: Wing style Single Shell contact\nPedal: P5000 Double Chain Longboard\nMemory Lock: Ring style\nHoop: 1.6mm Triple-Flanged Chrome-Steel\n⚠ Không bao gồm cymbal và ghế trống'},
+  {id:'kb-cymbal-468',cat:'drumkitz',brand:'Kingzbeat',model:'Cymbal Pack MAP468',name:'Bộ Cymbal Steel 14"+16"+20" + Túi',price:1780000,icon:'🔔',badges:[],
+   thumb:'images/AD_cymbal%20468.jpg',desc:'Brass-finished stainless steel với các điểm đóng búa tạo âm sáng, rõ\nSet MAP468 gồm: Hi-hat 14" (cặp), Crash 16", Ride 20", túi đựng cymbal\nChất liệu dày hơn, bền hơn'},
+  {id:'kb-cymbal-4680',cat:'drumkitz',brand:'Kingzbeat',model:'Cymbal Pack MAP4680',name:'Bộ Cymbal Steel 14"+16"+18"+20" + Túi',price:2150000,icon:'🔔',badges:[],
+   thumb:'images/AD_cymbal%204680.jpg',desc:'Brass-finished stainless steel với các điểm đóng búa\nSet MAP4680 gồm: Hi-hat 14" (cặp), Crash 16", Crash 18", Ride 20", túi đựng cymbal'},
   // DRUM THRONES
   {id:'kb-t2000',cat:'accessories',brand:'Kingzbeat',model:'T2000',name:'Ghế Trống Tròn – Da 11"',price:1000000,icon:'🪑',badges:[],desc:'Loại ghế: Tròn\nKích thước: 11" đệm da 50mm\nGiỏ: Solid Casting\nChiều cao điều chỉnh: 420-530mm'},
   {id:'kb-t3000e',cat:'accessories',brand:'Kingzbeat',model:'T3000E',name:'Ghế Trống Tròn – Da 13"',price:1450000,icon:'🪑',badges:[],desc:'Loại ghế: Tròn\nKích thước: 13" đệm da 60mm\nGiỏ: Solid Casting\nChiều cao điều chỉnh: 445-575mm'},
   {id:'kb-t5000sa',cat:'accessories',brand:'Kingzbeat',model:'T5000SA',name:'Ghế Trống Yên Ngựa – Da 15"',price:2300000,icon:'🪑',badges:[],desc:'Loại ghế: Yên ngựa (Saddle)\nKích thước: 15" đệm da dày 90mm\nGiỏ: Solid Casting\nChiều cao điều chỉnh: 510-670mm'},
   // DRUMSTICKS
-  {id:'jg-5a',cat:'accessories',brand:'Just Groove',model:'5A',name:'Dùi Trống 5A – Hickory',price:205000,icon:'🥢',badges:[],desc:'Gỗ: American Hickory\nDài: 40.64cm (16") | Đường kính: 1.45cm\nĐầu: Teardrop Tip\nMàu: Wood, Pink, White, Blue, Yellow, Red, Black, Green'},
-  {id:'jg-5b',cat:'accessories',brand:'Just Groove',model:'5B',name:'Dùi Trống 5B – Hickory',price:205000,icon:'🥢',badges:[],desc:'Gỗ: American Hickory\nDài: 40.64cm (16") | Đường kính: 1.51cm\nĐầu: Teardrop Tip'},
-  {id:'jg-7a',cat:'accessories',brand:'Just Groove',model:'7A',name:'Dùi Trống 7A – Hickory',price:205000,icon:'🥢',badges:[],desc:'Gỗ: American Hickory\nDài: 39.37cm (15.5") | Đường kính: 1.38cm\nĐầu: Teardrop Tip'},
-  {id:'jg-tora-ex7a',cat:'accessories',brand:'Just Groove',model:'Tora EX7A',name:'Dùi Trống Signature Tora EX7A',price:270000,icon:'🥢',badges:['hot'],desc:'Phiên bản chữ ký đặc biệt\nGỗ: American Hickory\nDài: 39.37cm (15.5") | Đường kính: 1.38cm\nĐầu: Teardrop Tip'},
-  {id:'jg-tora-5a',cat:'accessories',brand:'Just Groove',model:'Tora 5A',name:'Dùi Trống Signature Tora 5A',price:270000,icon:'🥢',badges:['hot'],desc:'Phiên bản chữ ký đặc biệt\nGỗ: American Hickory\nDài: 40.64cm (16") | Đường kính: 1.45cm\nĐầu: Teardrop Tip'},
+  {id:'jg-5a',cat:'drumkitz',brand:'Just Groove',model:'5A',name:'Dùi Trống 5A – Hickory',price:205000,icon:'🥢',badges:[],
+   thumb:'images/5A.jpg',desc:'Gỗ: American Hickory\nDài: 40.64cm (16") | Đường kính: 1.45cm\nĐầu: Teardrop Tip\nMàu: Wood, Pink, White, Blue, Yellow, Red, Black, Green'},
+  {id:'jg-5b',cat:'drumkitz',brand:'Just Groove',model:'5B',name:'Dùi Trống 5B – Hickory',price:205000,icon:'🥢',badges:[],
+   thumb:'images/5B.jpg',desc:'Gỗ: American Hickory\nDài: 40.64cm (16") | Đường kính: 1.51cm\nĐầu: Teardrop Tip'},
+  {id:'jg-7a',cat:'drumkitz',brand:'Just Groove',model:'7A',name:'Dùi Trống 7A – Hickory',price:205000,icon:'🥢',badges:[],
+   thumb:'images/7A.jpg',desc:'Gỗ: American Hickory\nDài: 39.37cm (15.5") | Đường kính: 1.38cm\nĐầu: Teardrop Tip'},
+  {id:'jg-tora-ex7a',cat:'drumkitz',brand:'Just Groove',model:'Tora EX7A',name:'Dùi Trống Signature Tora EX7A',price:270000,icon:'🥢',badges:['hot'],desc:'Phiên bản chữ ký đặc biệt\nGỗ: American Hickory\nDài: 39.37cm (15.5") | Đường kính: 1.38cm\nĐầu: Teardrop Tip'},
+  {id:'jg-tora-5a',cat:'drumkitz',brand:'Just Groove',model:'Tora 5A',name:'Dùi Trống Signature Tora 5A',price:270000,icon:'🥢',badges:['hot'],desc:'Phiên bản chữ ký đặc biệt\nGỗ: American Hickory\nDài: 40.64cm (16") | Đường kính: 1.45cm\nĐầu: Teardrop Tip'},
   // MIXER
   {id:'big-mv80',cat:'mixer',brand:'Bigsong',model:'MV-80',name:'Mixer 12 kênh – Bluetooth + USB',price:9700000,icon:'🎚️',badges:[],desc:'Mixer 12 kênh đa năng\n• EQ 3 dải (Bass – Mid – Treble)\n• Hỗ trợ: XLR, 6.35mm, RCA, USB, Bluetooth\n• Công suất: 200W – 800W Max\n• Hiệu ứng DSP: Reverb, Delay tích hợp\n• Bluetooth phát nhạc không dây | USB phát nhạc & thu âm\n• Kèm vali nhôm bảo vệ\n• Phù hợp phòng họp, quán café, sân khấu 300-500 người'},
   {id:'big-am8fx',cat:'mixer',brand:'Bigsong',model:'AM-8FX',name:'Mixer AM-8FX',price:8500000,icon:'🎚️',badges:[],desc:'Mixer Bigsong AM-8FX chuyên nghiệp'},
@@ -464,27 +474,27 @@ const P = [
   {id:'B-6Pro',cat:'wireless',brand:'NUX',model:'B-6 Pro',name:'2.4GHz Wireless kèn hơi – Stomp Receiver',price:8950000,icon:'🎷',badges:['new'],
    thumb:'https://cn.nuxaudio.com/wp-content/uploads/2025/05/B-6-PRO_Thumbnails.jpg',desc:'Wireless cho nhạc cụ hơi (New)\n• 24-bit/48kHz | Dynamic 112dBa | Độ trễ 3.6ms\n• Receiver tích hợp Tuner, Booster, FX LOOP, USB Audio\n• 13 EQ curve | Pin 7h (phát) / 10-11h (thu)'},
   // NUX DIGITAL DRUMS
-  {id:'DM-110',cat:'drums-digital',brand:'NUX',model:'DM-110',name:'Trống Điện All Mesh – 12 kit (New)',price:10000000,icon:'🥁',badges:['new'],
+  {id:'DM-110',cat:'drumkitz',brand:'NUX',model:'DM-110',name:'Trống Điện All Mesh – 12 kit (New)',price:10000000,icon:'🥁',badges:['new'],
    thumb:'images/DM-110_Thumbnails-1-300x240.jpg',
    images:['images/DM-110_D_01.jpg','images/DM-110_D_03.jpg','images/DM-110_D_04_EN.jpg','images/DM-110_D_06.jpg','images/DM-110_D_08.jpg','images/DM-110_D_09.jpg','images/DM-110_D_10.jpg'],
    desc:'Bộ trống điện DM-110\n• 3 Tom, 1 Snare, 1 Hi-hat, 1 Crash, 1 Ride, 1 Kick (tất cả Dual-zone)\n• Tất cả đầu Mesh | EQ & Reverb\n• 12 kit factory + 3 custom | App miễn phí'},
-  {id:'DM-210',cat:'drums-digital',brand:'NUX',model:'DM-210',name:'Trống Điện All Mesh – 14 triệu',price:14000000,icon:'🥁',badges:[],
+  {id:'DM-210',cat:'drumkitz',brand:'NUX',model:'DM-210',name:'Trống Điện All Mesh – 14 triệu',price:14000000,icon:'🥁',badges:[],
    thumb:'images/DM-210_Thumbnails-1-300x240.jpg',
    images:['images/DM-210_D_01.jpg','images/DM-210_D_02.jpg','images/DM-210_D_03.jpg','images/DM-210_D_04.jpg','images/DM-210_D_05-1.jpg','images/DM-210_D_06.jpg','images/DM-210_D_08.jpg','images/DM-210_D_09.jpg','images/DM-210_D_10.jpg'],
    desc:'Bộ trống điện DM-210\n• Tom 8" x3, Snare 8", Hi-hat 10", Crash 10", Ride 10"\n• Tất cả đầu Mesh | MIDI qua USB\n• Metronome, Coach, EFX'},
-  {id:'DM-310H',cat:'drums-digital',brand:'NUX',model:'DM-310H',name:'Trống Điện 10" Snare – Bluetooth (New)',price:22500000,icon:'🥁',badges:['new'],
+  {id:'DM-310H',cat:'drumkitz',brand:'NUX',model:'DM-310H',name:'Trống Điện 10" Snare – Bluetooth (New)',price:22500000,icon:'🥁',badges:['new'],
    thumb:'images/DM-310H_Thumbnails_2-300x240.jpg',
    images:['images/DM-310H_D_01.jpg','images/DM-310H_D_04.jpg','images/DM-310H_D_05_1.jpg','images/DM-310H_D_06_2-1-scaled.jpg','images/DM-310H_D_07.jpg','images/DM-310H_D_08-2.jpg','images/DM-310H_D_11.jpg','images/DM-310H_D_15.jpg','images/DM-310H_D_16_1.jpg','images/DM-310H_D_17-1.jpg'],
    desc:'Bộ trống điện DM-310H\n• Snare 10", Tom 8" x2, Floor Tom 10"\n• Hi-Hat 12", Crash 12" x2, Ride 14"\n• USB audio, TRRS, Metronome, Bluetooth'},
-  {id:'DM-7X',cat:'drums-digital',brand:'NUX',model:'DM-7X',name:'Trống Điện – 3 Tom 2 Crash All Mesh',price:22000000,icon:'🥁',badges:[],
+  {id:'DM-7X',cat:'drumkitz',brand:'NUX',model:'DM-7X',name:'Trống Điện – 3 Tom 2 Crash All Mesh',price:22000000,icon:'🥁',badges:[],
    thumb:'images/DM-7X_Thumbnails-300x240.jpg',
    images:['images/DM-7X_D_02.jpg','images/DM-7X_D_03.jpg','images/DM-7X_D_04.jpg','images/DM-7X_D_05.jpg','images/DM-7X_D_09.jpg','images/DM-7X_D_12.jpg','images/DM-7X_D_13.jpg'],
    desc:'DM-7X: 3 Tom, 1 Snare, 1 Hi-Hat, 2 Crash, 1 Ride\n• Tất cả đầu Mesh | MIDI qua USB\n• Metronome, Rhythm, Tempo, EFX'},
-  {id:'DM-8',cat:'drums-digital',brand:'NUX',model:'DM-8',name:'Trống Điện Pro – Dual-zone toàn bộ',price:40000000,icon:'🥁',badges:['premium'],
+  {id:'DM-8',cat:'drumkitz',brand:'NUX',model:'DM-8',name:'Trống Điện Pro – Dual-zone toàn bộ',price:40000000,icon:'🥁',badges:['premium'],
    thumb:'images/DM-8_Thumbnails-1-300x240.jpg',
    images:['images/DM-8_D_01.jpg','images/DM-8_D_04.jpg','images/DM-8_D_06.jpg','images/DM-8_D_10.jpg','images/DM-8_D_11.jpg','images/DM-8_D_22.jpg'],
    desc:'DM-8 – Trống điện cao cấp\n• Tom x3 (Dual-zone), Snare (head/rim/rimshot)\n• Hi-Hat Dual-zone, Crash x2 Dual-zone, Ride (bow/edge/bell)\n• Tất cả đầu Mesh | MIDI qua USB'},
-  {id:'DP-2000',cat:'drums-digital',brand:'NUX',model:'DP-2000',name:'Pad Trống Điện Chuyên Nghiệp',price:8500000,icon:'🎛️',badges:[],
+  {id:'DP-2000',cat:'drumkitz',brand:'NUX',model:'DP-2000',name:'Pad Trống Điện Chuyên Nghiệp',price:8500000,icon:'🎛️',badges:[],
    thumb:'images/DM-2000_Thumbnails-1.jpg',
    images:['images/DP-2000_D_01.jpg','images/DP-2000_D_02.jpg','images/DP-2000_D_03.jpg','images/DP-2000_D_06-1.jpg','images/DP-2000_D_07.jpg','images/DP-2000_D_08.jpg','images/DP-2000_D_09.jpg','images/DP-2000_D_10.jpg'],
    desc:'Professional Digital Percussion Pad\n• 20 preset | Chức năng Layer | Nhập WAV\n• USB Bluetooth + USB Drive\n• Tương thích e-drum và trống acoustic'},
@@ -574,7 +584,7 @@ const P = [
 ];
 
 // STATE
-let cart=[], activeFilter='all', searchQ='';
+let cart=[], activeFilter='drumkitz', searchQ='';
 
 function fmt(n){return n.toLocaleString('vi-VN')+' ₫'}
 
