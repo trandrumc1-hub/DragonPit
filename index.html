@@ -213,7 +213,7 @@ footer{background:#090808;border-top:1px solid var(--border);padding:40px 24px 2
 <!-- HEADER -->
 <header>
   <a href="#" class="logo-wrap">
-    <span class="logo-icon">🐉</span>
+    <img src="images/img_dragonpit_logo.webp" alt="Dragon Pit Logo" style="width:42px;height:42px;object-fit:contain;border-radius:50%">
     <div>
       <div class="logo-text">DRAGON PIT</div>
       <div class="logo-sub">Drum Studio · Hà Nội</div>
@@ -241,7 +241,7 @@ footer{background:#090808;border-top:1px solid var(--border);padding:40px 24px 2
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
-  <div class="hero-drum">🥁</div>
+  <div class="hero-drum"><img src="images/img_dragonpit_logo.webp" alt="Dragon Pit" style="width:120px;height:120px;object-fit:contain;filter:invert(1) sepia(1) saturate(2) hue-rotate(5deg);filter:drop-shadow(0 0 30px rgba(201,168,76,.5))"></div>
   <div class="hero-eyebrow">487 Hoàng Hoa Thám · Ba Đình · Hà Nội</div>
   <h1>DRAGON<br><span>PIT</span></h1>
   <p class="hero-tagline">Drum Studio chuyên nghiệp — Học trống, Học sản xuất nhạc, Cho thuê phòng tập band & Mua sắm nhạc cụ</p>
@@ -366,7 +366,7 @@ footer{background:#090808;border-top:1px solid var(--border);padding:40px 24px 2
 <footer id="footer">
   <div class="footer-grid">
     <div>
-      <div class="footer-logo">🐉 DRAGON PIT</div>
+      <div class="footer-logo" style="display:flex;align-items:center;gap:10px"><img src="images/img_dragonpit_logo.webp" alt="Logo" style="width:48px;height:48px;object-fit:contain;filter:invert(1)"> DRAGON PIT</div>
       <div class="footer-desc">Drum Studio chuyên nghiệp tại Hà Nội.<br>Dạy trống, sản xuất nhạc, cho thuê phòng tập band và kinh doanh nhạc cụ chính hãng.</div>
       <a href="https://zalo.me/0993997993" target="_blank" class="footer-zalo" style="margin-top:16px">💬 Nhắn Zalo ngay</a>
     </div>
@@ -447,14 +447,22 @@ const P = [
   {id:'kb-t3000e',cat:'accessories',brand:'Kingzbeat',model:'T3000E',name:'Ghế Trống Tròn – Da 13"',price:1450000,icon:'🪑',badges:[],desc:'Loại ghế: Tròn\nKích thước: 13" đệm da 60mm\nGiỏ: Solid Casting\nChiều cao điều chỉnh: 445-575mm'},
   {id:'kb-t5000sa',cat:'accessories',brand:'Kingzbeat',model:'T5000SA',name:'Ghế Trống Yên Ngựa – Da 15"',price:2300000,icon:'🪑',badges:[],desc:'Loại ghế: Yên ngựa (Saddle)\nKích thước: 15" đệm da dày 90mm\nGiỏ: Solid Casting\nChiều cao điều chỉnh: 510-670mm'},
   // DRUMSTICKS
-  {id:'jg-5a',cat:'drumkitz',brand:'Just Groove',model:'5A',name:'Dùi Trống 5A – Hickory',price:205000,icon:'🥢',badges:[],
+  {id:'jg-7a-5a-bundle',cat:'drumkitz',brand:'Just Groove',model:'7A+5A Bundle',name:'Dùi Trống Just Groove 7A+5A – Bó 6 màu',price:225000,icon:'🥢',badges:['new'],
+   thumb:'images/img_drumstick_bundle1.webp',
+   images:['images/img_drumstick_bundle1.webp','images/img_drumstick_bundle2.webp'],
+   desc:'Bó dùi trống Just Groove nhiều màu sắc\n• Bộ gồm 6 màu: Đỏ, Xanh, Vàng, Hồng, Trắng, Gỗ tự nhiên\n• Gỗ: American Hickory\n• Size 7A + 5A\n• Đầu Teardrop Tip\n• Thương hiệu: Just Groove'},
+  {id:'jg-5a-glow',cat:'drumkitz',brand:'Just Groove',model:'5A Dạ Quang',name:'Dùi Trống Just Groove 5A Dạ Quang Xanh Lá',price:290000,icon:'🥢',badges:['new'],
+   thumb:'images/img_drumstick_glow.webp',
+   images:['images/img_drumstick_glow.webp'],
+   desc:'Dùi Trống Just Groove 5A Dạ Quang\n• Màu xanh lá dạ quang nổi bật, phát sáng trong tối\n• Gỗ: American Hickory\n• Size 5A | Đầu Teardrop Tip\n• Phù hợp biểu diễn sân khấu'},
+  {id:'jg-5a',cat:'drumkitz',brand:'Just Groove',model:'5A',name:'Dùi Trống 5A – Hickory',price:225000,icon:'🥢',badges:[],
    thumb:'images/5A.jpg',desc:'Gỗ: American Hickory\nDài: 40.64cm (16") | Đường kính: 1.45cm\nĐầu: Teardrop Tip\nMàu: Wood, Pink, White, Blue, Yellow, Red, Black, Green'},
-  {id:'jg-5b',cat:'drumkitz',brand:'Just Groove',model:'5B',name:'Dùi Trống 5B – Hickory',price:205000,icon:'🥢',badges:[],
+  {id:'jg-5b',cat:'drumkitz',brand:'Just Groove',model:'5B',name:'Dùi Trống 5B – Hickory',price:225000,icon:'🥢',badges:[],
    thumb:'images/5B.jpg',desc:'Gỗ: American Hickory\nDài: 40.64cm (16") | Đường kính: 1.51cm\nĐầu: Teardrop Tip'},
-  {id:'jg-7a',cat:'drumkitz',brand:'Just Groove',model:'7A',name:'Dùi Trống 7A – Hickory',price:205000,icon:'🥢',badges:[],
+  {id:'jg-7a',cat:'drumkitz',brand:'Just Groove',model:'7A',name:'Dùi Trống 7A – Hickory',price:225000,icon:'🥢',badges:[],
    thumb:'images/7A.jpg',desc:'Gỗ: American Hickory\nDài: 39.37cm (15.5") | Đường kính: 1.38cm\nĐầu: Teardrop Tip'},
-  {id:'jg-tora-ex7a',cat:'drumkitz',brand:'Just Groove',model:'Tora EX7A',name:'Dùi Trống Signature Tora EX7A',price:270000,icon:'🥢',badges:['hot'],desc:'Phiên bản chữ ký đặc biệt\nGỗ: American Hickory\nDài: 39.37cm (15.5") | Đường kính: 1.38cm\nĐầu: Teardrop Tip'},
-  {id:'jg-tora-5a',cat:'drumkitz',brand:'Just Groove',model:'Tora 5A',name:'Dùi Trống Signature Tora 5A',price:270000,icon:'🥢',badges:['hot'],desc:'Phiên bản chữ ký đặc biệt\nGỗ: American Hickory\nDài: 40.64cm (16") | Đường kính: 1.45cm\nĐầu: Teardrop Tip'},
+  {id:'jg-tora-ex7a',cat:'drumkitz',brand:'Just Groove',model:'Tora EX7A',name:'Dùi Trống Signature Tora EX7A',price:290000,icon:'🥢',badges:['hot'],desc:'Phiên bản chữ ký đặc biệt\nGỗ: American Hickory\nDài: 39.37cm (15.5") | Đường kính: 1.38cm\nĐầu: Teardrop Tip'},
+  {id:'jg-tora-5a',cat:'drumkitz',brand:'Just Groove',model:'Tora 5A',name:'Dùi Trống Signature Tora 5A',price:290000,icon:'🥢',badges:['hot'],desc:'Phiên bản chữ ký đặc biệt\nGỗ: American Hickory\nDài: 40.64cm (16") | Đường kính: 1.45cm\nĐầu: Teardrop Tip'},
   // MIXER
   {id:'big-mv80',cat:'mixer',brand:'Bigsong',model:'MV-80',name:'Mixer 12 kênh – Bluetooth + USB',price:9700000,icon:'🎚️',badges:[],desc:'Mixer 12 kênh đa năng\n• EQ 3 dải (Bass – Mid – Treble)\n• Hỗ trợ: XLR, 6.35mm, RCA, USB, Bluetooth\n• Công suất: 200W – 800W Max\n• Hiệu ứng DSP: Reverb, Delay tích hợp\n• Bluetooth phát nhạc không dây | USB phát nhạc & thu âm\n• Kèm vali nhôm bảo vệ\n• Phù hợp phòng họp, quán café, sân khấu 300-500 người'},
   {id:'big-am8fx',cat:'mixer',brand:'Bigsong',model:'AM-8FX',name:'Mixer AM-8FX',price:8500000,icon:'🎚️',badges:[],desc:'Mixer Bigsong AM-8FX chuyên nghiệp'},
